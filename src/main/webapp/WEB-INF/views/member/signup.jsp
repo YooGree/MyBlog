@@ -6,15 +6,19 @@
 
 			<div class="col-sm-8 text-left">
 				<h3>회원가입</h3>
-				<form role="form" class="form-horizontal" method="POST" action="<c:url value='/signup' />">
+				<form role="form" class="form-horizontal" method="POST" action="<c:url value='/signupsubmit' />">
+					<div class="form-group">
+						<label class="control-label col-sm-2">회원 시퀀스:</label>
+						<div class="col-sm-10">
+							<input type="text" class="form-control" name="MEMBER_SEQ" value="${paramMap.commonUtil}"></input>
+						</div>
+					</div>
 					<div class="form-group">
 						<label class="control-label col-sm-2" for="email">이메일 주소:</label>
 						<div class="col-sm-10">
-							<input name="MEMBER_SEQ" value="${paramMap.commonutil}"></input>
 							<input type="email" class="form-control" id="email" placeholder="email@example.com" name="MEMBER_ID">
 						</div>
 					</div>
-					
 					<div class="form-group">
 						<label class="control-label col-sm-2" for="email">이름:</label>
 						<div class="col-sm-10">
@@ -62,22 +66,22 @@
 						<label class="control-label col-sm-2" for="pwd">거주지:</label>
 						<div class="col-sm-10">
 						<label class="form-check-label"> 
-							<input type="radio"  id="gyeonggi" value="001" name="MEMBER_RESI"> 경기도
+							<input type="radio"  id="gyeonggi" value="경기도" name="MEMBER_RESI"> 경기도
 						</label>
 						<label class="form-check-label"> 
-							<input type="radio"  id="chungcheong" value="002" name="MEMBER_RESI"> 충청도
+							<input type="radio"  id="chungcheong" value="충청도" name="MEMBER_RESI"> 충청도
 						</label>
 						<label class="form-check-label"> 
-							<input type="radio"  id="gangwon" value="003" name="MEMBER_RESI"> 강원도
+							<input type="radio"  id="gangwon" value="강원도" name="MEMBER_RESI"> 강원도
 						</label>
 						<label class="form-check-label"> 
-							<input type="radio"  id="jeolla" value="004" name="MEMBER_RESI"> 전라도
+							<input type="radio"  id="jeolla" value="전라도" name="MEMBER_RESI"> 전라도
 						</label>
 						<label class="form-check-label"> 
-							<input type="radio"  id="gyeongsang" value="005" name="MEMBER_RESI"> 경상도
+							<input type="radio"  id="gyeongsang" value="경상도" name="MEMBER_RESI"> 경상도
 						</label>
 						<label class="form-check-label"> 
-							<input type="radio"  id="etc" value="006" name="MEMBER_RESI"> 기타
+							<input type="radio"  id="etc" value="기타" name="MEMBER_RESI"> 기타
 						</label>
 							
 						</div>

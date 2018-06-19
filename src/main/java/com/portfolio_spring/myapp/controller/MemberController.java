@@ -41,15 +41,19 @@ public class MemberController {
 		List<Object> resultList = new ArrayList<Object>();
 		System.out.println(action);
 		
-		// 회원 가입
+		// 회원 가입 화면
 		if ("signup".equalsIgnoreCase(action)) {
 			System.out.println("회원가입");
-			viewName = "/member/signup";
-			paramMap.put("commonUtil", commonUtil.getUniqueSequence()); // 기본 시퀀스를 자동으로 만들고
-			sqlMapId = "user.signup"; // user라는 이름을 가진 sqlmap의 signup으로 가서 쿼리문을 가져온다.
-			service.SaveObject(sqlMapId, paramMap); // 가져온 쿼리문과 시퀀스를 서비스로 보낸다.
-		// 내 정보	
+			viewName = "/member/signup";	
+			paramMap.put("commonUtil", commonUtil.getUniqueSequence());
+		// 회원 가입 화면에서 데이터 넘기기
+		} else if ("signupsubmit".equalsIgnoreCase(action)) {
+			viewName = "/member/login";
+			sqlMapId = "user.signup"; 
+			service.SaveObject(sqlMapId, paramMap); 
+		// 내 정보
 		} else if ("mypage".equalsIgnoreCase(action)) {
+		
 			viewName = "/mypage/mypage";
 			sqlMapId = "user.myinfo";
 			resultMap = service.getObject(sqlMapId, paramMap);
