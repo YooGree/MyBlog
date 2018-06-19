@@ -6,13 +6,13 @@ import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.portfolio_spring.myapp.dao.MemberDao;
+import com.portfolio_spring.myapp.dao.BoardDao;
 
 @Service
 public class BoardService {
 	
 	@Autowired
-	private MemberDao dao;
+	private BoardDao dao;
 	
 	public List<Object> getList(String sqlMapId, Object dataMap){
 		
