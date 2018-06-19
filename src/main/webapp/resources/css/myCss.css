@@ -1,4 +1,55 @@
-@charset "EUC-KR";
+@charset "UTF-8";
+
+/*jin*/
+
+.navbar {
+	min-height: 7%;
+	border-radius: 0;
+	
+}
+
+#navbar_container {
+	padding-top: 0.5%;
+}
+
+
+.sidenav {
+	background-color: #f1f1f1;
+	height: 100%;
+}
+
+#main_body{
+	margin-left: 0;
+	margin-right:0;
+	padding-left:0;
+	padding-right:0;
+}
+
+footer {
+	background-color: #555;
+	color: white;
+	position: absolute;
+	bottom: 0;
+	width: 100%;
+	height: 7%;
+}
+
+/* On small screens, set height to 'auto' for sidenav and grid */
+@media screen and (max-width: 767px) {
+	.sidenav {
+		height: auto;
+		padding: 15px;
+	}
+	.row.content {
+		height: auto;
+	}
+}
+
+
+/*jin*/
+
+
+
 
 .form-control-plaintext.form-control-sm, .input-group-sm>.form-control-plaintext.form-control,
 	.input-group-sm>.input-group-prepend>.form-control-plaintext.input-group-text,
