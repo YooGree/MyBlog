@@ -29,7 +29,7 @@ public class MemberController {
 	private CommonUtil commonUtil;
 	
 	// RequestMapping를 이용하여 매핑값, 데이터 전송 방식을 물려받음, 이후 RequestParam을 이용하여 넘어오는 데이터를 받고, modelanView 생성
-	@RequestMapping(value = "{action}", method = {RequestMethod.GET, RequestMethod.POST})
+	@RequestMapping(value = "/{action}", method = {RequestMethod.GET, RequestMethod.POST})
 	public ModelAndView actionMethod(@RequestParam Map<String, Object> paramMap, @PathVariable String action, ModelAndView modelandView) {
 		
 		String viewName = "";
@@ -43,15 +43,16 @@ public class MemberController {
 		
 		// 회원 가입
 		if ("signup".equalsIgnoreCase(action)) {
-			System.out.println("ㅇㅋㅇㅋ");
-			viewName = "/member/login";
+			System.out.println("회원가입");
+			viewName = "/member/signup";
 			paramMap.put("commonUtil", commonUtil.getUniqueSequence()); // 기본 시퀀스를 자동으로 만들고
 			sqlMapId = "user.signup"; // user라는 이름을 가진 sqlmap의 signup으로 가서 쿼리문을 가져온다.
 			service.SaveObject(sqlMapId, paramMap); // 가져온 쿼리문과 시퀀스를 서비스로 보낸다.
 		// 내 정보	
 		} else if ("mypage".equalsIgnoreCase(action)) {
-			System.out.println("바보");
 			viewName = "/mypage/mypage";
+			sqlMapId = "user.myinfo";
+			resultMap = service.getObject(sqlMapId, paramMap);
 		}
 
 		modelandView.setViewName(viewName);

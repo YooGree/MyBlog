@@ -10,6 +10,7 @@
 					<div class="form-group">
 						<label class="control-label col-sm-2" for="email">이메일 주소:</label>
 						<div class="col-sm-10">
+							<input name="MEMBER_SEQ" value="${paramMap.commonutil}"></input>
 							<input type="email" class="form-control" id="email" placeholder="email@example.com" name="MEMBER_ID">
 						</div>
 					</div>
@@ -17,7 +18,7 @@
 					<div class="form-group">
 						<label class="control-label col-sm-2" for="email">이름:</label>
 						<div class="col-sm-10">
-							<input type="text" class="form-control" id="name" placeholder="your name" name="name">
+							<input type="text" class="form-control" id="name" placeholder="your name" name="MEMBER_NAME">
 						</div>
 					</div>
 					<div class="form-group">

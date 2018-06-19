@@ -11,9 +11,11 @@
 		order by NAME
 	</select>
 	
-	<select id="read" resultType="Map" parameterType="Map">
-		select MEMBER_ID, PASSWORD, NAME, EMAIL, CELLPHONE, MEMBER_SEQ
-		from CIP_MEMBER
+	<select id="myinfo" resultType="Map" parameterType="Map">
+		select MEMBER_ID, 
+		MEMBER_TEL, 
+		MEMBER_BIRTH
+		from MEMBER
 		where MEMBER_SEQ = #{MEMBER_SEQ}
 	</select>
 	
@@ -21,16 +23,18 @@
 		insert into MEMBER(
 		MEMBER_SEQ, 
 		MEMBER_ID, 
+		MEMBER_NAME
 		MEMBER_PW, 
 		MEMBER_TEL, 
 		MEMBER_BIRTH, 
 		MEMBER_RESI) values (
 		#{MEMBER_SEQ},
 		#{MEMBER_ID},
+		#{MEMBER_NAME},
 		#{MEMBER_PW},
 		#{MEMBER_TEL},
 		#{MEMBER_BIRTH},
-		#{MEMBER_RESI);
+		#{MEMBER_RESI})
 	</insert>
 	
 </mapper>
