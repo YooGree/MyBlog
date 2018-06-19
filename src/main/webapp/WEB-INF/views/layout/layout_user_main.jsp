@@ -13,7 +13,7 @@
 
 		<tiles:insertAttribute name="layout.top" />
 	
-		<div id="main_body" class="container-fluid text-center">
+		<div id="main_body" class="container-fluid">
 		
 			<div class="col-sm-2">
 				<tiles:insertAttribute name="layout.left" />

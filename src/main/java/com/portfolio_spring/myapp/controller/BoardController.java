@@ -48,10 +48,10 @@ public class BoardController {
 			sqlMapId = "user.signup"; // user라는 이름을 가진 sqlmap의 signup으로 가서 쿼리문을 가져온다.
 			service.SaveObject(sqlMapId, paramMap);*/ // 가져온 쿼리문과 시퀀스를 서비스로 보낸다.
 		// 글읽기	
-		} else if ("mypage".equalsIgnoreCase(action)) {
-			viewName = "/mypage/mypage";
-			sqlMapId = "user.myinfo";
-			resultMap = service.getObject(sqlMapId, paramMap);
+		} else if ("list".equalsIgnoreCase(action)) {
+			viewName = viewName + action;			
+			/*sqlMapId = "user.myinfo";
+			resultMap = service.getObject(sqlMapId, paramMap);*/
 		}
 
 		modelandView.setViewName(viewName);

@@ -3,8 +3,8 @@
 
 <div class="sidenav">
 	<ul>
-		<li><a href="./notice/list.jsp">Daily</a></li>
-		<li><a href="#">Food</a></li>
-		<li><a href="#">Friends</a></li>
+		<li><a href="<c:url value='/board/list'/>">Daily</a></li>
+		<li><a href="<c:url value='/board/list'/>">Food</a></li>
+		<li><a href="<c:url value='/board/list'/>">Friends</a></li>
 	</ul>
 </div>

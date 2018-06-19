@@ -14,10 +14,10 @@
                tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
                minim veniam, quis nostrud exercitation ullamco laboris nisi ut
                aliquip ex ea commodo consequat.</p>
-            <input class="btn btn-primary" type="button" id="insert"
-               name="insert" value="글쓰기"
-               onclick="location.href='./notice/insert.jsp'">
-            <hr>
+            <a class="btn btn-primary" type="button" id="insert"
+               name="insert"
+               href="<c:url value='/board/edit'/>">글쓰기</a>
+            
 
             <p>조회수 많은 게시물 리스트</p>
             <!-- 게시물 목록 -->
