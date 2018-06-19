@@ -1,6 +1,8 @@
 <%@ taglib prefix = "c" uri = "http://java.sun.com/jsp/jstl/core" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
    pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -10,17 +12,13 @@
 
 </head>
 <body>
-
-
-
-	
 			<div class="col-sm-8 text-left">
 				<h3>회원가입</h3>
-				<form class="form-horizontal" action="#" method="post">
+				<form role="form" class="form-horizontal" method="POST" action="<c:url value='/signup' />">
 					<div class="form-group">
 						<label class="control-label col-sm-2" for="email">이메일 주소:</label>
 						<div class="col-sm-10">
-							<input type="email" class="form-control" id="email" placeholder="email@example.com" name="email">
+							<input type="email" class="form-control" id="email" placeholder="email@example.com" name="MEMBER_ID">
 						</div>
 					</div>
 					
@@ -33,26 +31,26 @@
 					<div class="form-group">
 						<label class="control-label col-sm-2" for="pwd">비밀번호:</label>
 						<div class="col-sm-10">
-							<input type="password" class="form-control" id="pwd"placeholder="password" name="pwd">
+							<input type="password" class="form-control" id="pwd"placeholder="password" name="MEMBER_PW">
 						</div>
 					</div>
 					<div class="form-group">
 						<label class="control-label col-sm-2" for="pwd">비밀번호 확인:</label>
 						<div class="col-sm-10">
-							<input type="password" class="form-control" id="pwd2" placeholder="password" name="pwd2">
+							<input type="password" class="form-control" id="pwd2" placeholder="password" name="MEMBER_PW2">
 						</div>
 					</div>
 					<div class="form-group">
 						<label class="control-label col-sm-2" for="email">전화번호:</label>
 						<div class="col-sm-10">
-							<input type="tel" class="form-control" id="mobile" placeholder="010-0000-0000" name="mobile">
+							<input type="tel" class="form-control" id="mobile" placeholder="010-0000-0000" name="MEMBER_TEL">
 							
 						</div>
 					</div>
 					<div class="form-group">
 						<label class="control-label col-sm-2" for="email">생년월일:</label>
 						<div class="col-sm-10">
-							<input type="date" class="form-control" id="birth" placeholder="yy-mm-dd" name="birth">
+							<input type="date" class="form-control" id="birth" placeholder="yy-mm-dd" name="MEMBER_BIRTH">
 						</div>
 					</div>
 					<div class="form-group">
@@ -71,22 +69,22 @@
 						<label class="control-label col-sm-2" for="pwd">거주지:</label>
 						<div class="col-sm-10">
 						<label class="form-check-label"> 
-							<input type="radio"  id="gyeonggi" value="001" name="live"> 경기도
+							<input type="radio"  id="gyeonggi" value="001" name="MEMBER_RESI"> 경기도
 						</label>
 						<label class="form-check-label"> 
-							<input type="radio"  id="chungcheong" value="002" name="live"> 충청도
+							<input type="radio"  id="chungcheong" value="002" name="MEMBER_RESI"> 충청도
 						</label>
 						<label class="form-check-label"> 
-							<input type="radio"  id="gangwon" value="003" name="live"> 강원도
+							<input type="radio"  id="gangwon" value="003" name="MEMBER_RESI"> 강원도
 						</label>
 						<label class="form-check-label"> 
-							<input type="radio"  id="jeolla" value="004" name="live"> 전라도
+							<input type="radio"  id="jeolla" value="004" name="MEMBER_RESI"> 전라도
 						</label>
 						<label class="form-check-label"> 
-							<input type="radio"  id="gyeongsang" value="005" name="live"> 경상도
+							<input type="radio"  id="gyeongsang" value="005" name="MEMBER_RESI"> 경상도
 						</label>
 						<label class="form-check-label"> 
-							<input type="radio"  id="etc" value="006" name="live"> 기타
+							<input type="radio"  id="etc" value="006" name="MEMBER_RESI"> 기타
 						</label>
 							
 						</div>

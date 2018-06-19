@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="user">
+
+	<select id="list" resultType="Map" parameterType="Map">
+		select *
+		from CIP_MEMBER
+		order by NAME
+	</select>
+	
+	<select id="read" resultType="Map" parameterType="Map">
+		select MEMBER_ID, PASSWORD, NAME, EMAIL, CELLPHONE, MEMBER_SEQ
+		from CIP_MEMBER
+		where MEMBER_SEQ = #{MEMBER_SEQ}
+	</select>
+	
+	<insert id="signup" parameterType="Map">
+		insert into MEMBER(
+		MEMBER_SEQ, 
+		MEMBER_ID, 
+		MEMBER_PW, 
+		MEMBER_TEL, 
+		MEMBER_BIRTH, 
+		MEMBER_RESI) values (
+		#{MEMBER_SEQ},
+		#{MEMBER_ID},
+		#{MEMBER_PW},
+		#{MEMBER_TEL},
+		#{MEMBER_BIRTH},
+		#{MEMBER_RESI);
+	</insert>
+	
+</mapper>
