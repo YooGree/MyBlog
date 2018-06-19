@@ -1,17 +1,9 @@
-<%@ taglib prefix = "c" uri = "http://java.sun.com/jsp/jstl/core" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-   pageEncoding="UTF-8"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+	pageEncoding="UTF-8"%>
+<%@ taglib uri="http://tiles.apache.org/tags-tiles" prefix="tiles"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<title>index</title>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
 
-</head>
-<body>
 			<div class="col-sm-8 text-left">
 				<h3>회원가입</h3>
 				<form role="form" class="form-horizontal" method="POST" action="<c:url value='/signup' />">
@@ -97,15 +89,3 @@
 					</div>
 				</form>
 			</div>
-			<div class="col-sm-2 sidenav">
-				<div class="well">
-					<p>ADS</p>
-				</div>
-				<div class="well">
-					<p>ADS</p>
-				</div>
-			</div>
-		
-
-</body>
-</html>

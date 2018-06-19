@@ -9,11 +9,12 @@
 	<title><tiles:getAsString name="layout.title" /></title>
 </head>
 <body>
-	<div id="wrapper">
+
 
 		<tiles:insertAttribute name="layout.top" />
 	
 		<div id="main_body" class="container-fluid text-center">
+		
 			<div class="col-sm-2">
 				<tiles:insertAttribute name="layout.left" />
 			</div>
@@ -23,12 +24,12 @@
 			<div class="col-sm-2">
 				<tiles:insertAttribute name="layout.right" />
 			</div>
+	
 		</div>
-
 		<div>
 			<tiles:insertAttribute name="layout.footer" />
 		</div>
-	</div>
+
 	<!-- /#wrapper -->
 </body>
 </html>

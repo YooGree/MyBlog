@@ -30,8 +30,8 @@
 				<%
 					} else {
 				%>
-				<li><a href="<c:url value='/loginForm' />"> Login</a></li>
-				<li><a href="<c:url value='/SignUp'/>"> Sign up</a></li>
+				<li><a href="<c:url value='/login' />"> Login</a></li>
+				<li><a href="<c:url value='/signup'/>"> Sign up</a></li>
 				<%
 					}
 				%>

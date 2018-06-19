@@ -1,12 +1,7 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<title>index</title>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-
-</head>
-<body>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
+<%@ taglib uri="http://tiles.apache.org/tags-tiles" prefix="tiles"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
 	
 
@@ -14,27 +9,27 @@
 			<div class="col-sm-8 text-left">
 				<div class="form-group">
 					<input class="btn btn-primary" type="button" id="insert"
-						name="insert" value="글쓰기" onclick="location.href='./insert.jsp'">
+						name="insert" value="ê¸ì°ê¸°" onclick="location.href='./insert.jsp'">
 				</div>
 				<div class="form-group">
-					<a>목록보기</a>
+					<a>ëª©ë¡ë³´ê¸°</a>
 				</div>
 				<hr>
-				<!--  게시물 내용 -->
+				<!--  ê²ìë¬¼ ë´ì© -->
 				<div>
 
 					<div class="form-group">
-						<label><a href="#">카테고리명</a></label>
+						<label><a href="#">ì¹´íê³ ë¦¬ëª</a></label>
 					</div>
 					<div class="form-group">
-						<label>게시물 제목</label> <label>작성 일시</label><a>수정</a><a>삭제</a>
+						<label>ê²ìë¬¼ ì ëª©</label> <label>ìì± ì¼ì</label><a>ìì </a><a>ì­ì </a>
 					</div>
-					<div class="form-group"><textarea class="form-control" name="text" rows="10" cols="60" readonly>내용 </textarea></div>
+					<div class="form-group"><textarea class="form-control" name="text" rows="10" cols="60" readonly>ë´ì© </textarea></div>
 
 				</div>
 				<hr>
 
-				<!-- 게시물 목록 -->
+				<!-- ê²ìë¬¼ ëª©ë¡ -->
 				<div>
 					<table class="table table-hover">
 						<tr>
@@ -75,16 +70,3 @@
 					</ul>
 				</div>
 			</div>
-
-			<div class="col-sm-2 sidenav">
-				<div class="well">
-					<p>ADS</p>
-				</div>
-				<div class="well">
-					<p>ADS</p>
-				</div>
-			</div>
-		
-
-</body>
-</html>
