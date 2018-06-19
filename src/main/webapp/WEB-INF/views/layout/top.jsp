@@ -13,7 +13,7 @@
 		<div class="collapse navbar-collapse" id="myNavbar">
 			<ul class="nav navbar-nav">
 				<li class="active"><a href="<c:url value='/'/>">Home</a></li>
-				<li><a href="<c:url value='/info'/>">MyPage</a></li>
+				<li><a href="<c:url value='/mypage'/>">MyPage</a></li>
 				<li><a href="<c:url value='/setting' />">Setting</a></li>
 
 			</ul>
@@ -26,8 +26,8 @@
 				<%
 					}else{
 						%>
-				<li><a href="<c:url value='/loginForm' />"> Login</a></li>
-				<li><a href="<c:url value='/SignUp'/>"> Sign up</a></li>
+				<li><a href="<c:url value='/login' />"> Login</a></li>
+				<li><a href="<c:url value='/signup'/>"> Sign up</a></li>
 				<%
 					}
 				

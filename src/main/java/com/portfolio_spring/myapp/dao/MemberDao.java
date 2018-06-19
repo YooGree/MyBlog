@@ -16,13 +16,6 @@ public class MemberDao {
 	@Autowired
 	private SqlSessionTemplate sqlSession;
 	
-	private JdbcTemplate jdbcTemplate;
-	
-	@Autowired
-	public void setDataSource(DataSource dataSource) {
-		this.jdbcTemplate = new JdbcTemplate(dataSource);
-	}
-	
 	public List<Object> getList(String sqlMapId, Object dataMap) {
 		
 		List<Object> result = sqlSession.selectList(sqlMapId, dataMap);

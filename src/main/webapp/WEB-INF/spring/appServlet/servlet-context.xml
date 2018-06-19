@@ -36,8 +36,7 @@
 	</beans:bean>
 
 	<context:component-scan
-		base-package="com.portfolio_spring.myapp" 
-		/>
+		base-package="com.portfolio_spring.myapp" />
 
 	<!-- add for scaning any context configration -->
 	<context:annotation-config />

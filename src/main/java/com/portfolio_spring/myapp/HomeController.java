@@ -36,7 +36,7 @@ public class HomeController {
 		return "index";
 	}
 	
-	@RequestMapping(value = "/info", method = RequestMethod.GET)
+	@RequestMapping(value = "/mypage", method = RequestMethod.GET)
 	public String info(Locale locale, Model model) {
 		logger.info("Welcome home! The client locale is {}.", locale);
 		
@@ -47,7 +47,7 @@ public class HomeController {
 		
 		model.addAttribute("serverTime", formattedDate );
 		
-		return "info";
+		return "/mypage/mypage";
 	}
 
 	
@@ -62,10 +62,10 @@ public class HomeController {
 		
 		model.addAttribute("serverTime", formattedDate );
 		
-		return "setting";
+		return "/settings/setting";
 	}
 	
-	@RequestMapping(value = "/loginForm", method = RequestMethod.GET)
+	@RequestMapping(value = "/login", method = RequestMethod.GET)
 	public String loginForm(Locale locale, Model model) {
 		logger.info("Welcome home! The client locale is {}.", locale);
 		
@@ -76,10 +76,10 @@ public class HomeController {
 		
 		model.addAttribute("serverTime", formattedDate );
 		
-		return "login";
+		return "/member/login";
 	}
 	
-	@RequestMapping(value = "/SignUp", method = RequestMethod.GET)
+	@RequestMapping(value = "/signup", method = RequestMethod.GET)
 	public String signup(Locale locale, Model model) {
 		logger.info("Welcome home! The client locale is {}.", locale);
 		
@@ -90,7 +90,7 @@ public class HomeController {
 		
 		model.addAttribute("serverTime", formattedDate );
 		
-		return "signup";
+		return "/member/signup";
 	}
 	
 }
