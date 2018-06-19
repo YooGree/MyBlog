@@ -44,11 +44,14 @@ public class MemberController {
 		// 회원 가입
 		if ("signup".equalsIgnoreCase(action)) {
 			System.out.println("ㅇㅋㅇㅋ");
-			viewName = "/login";
+			viewName = "/member/login";
 			paramMap.put("commonUtil", commonUtil.getUniqueSequence()); // 기본 시퀀스를 자동으로 만들고
 			sqlMapId = "user.signup"; // user라는 이름을 가진 sqlmap의 signup으로 가서 쿼리문을 가져온다.
 			service.SaveObject(sqlMapId, paramMap); // 가져온 쿼리문과 시퀀스를 서비스로 보낸다.
 		// 내 정보	
+		} else if ("mypage".equalsIgnoreCase(action)) {
+			System.out.println("바보");
+			viewName = "/mypage/mypage";
 		}
 
 		modelandView.setViewName(viewName);
