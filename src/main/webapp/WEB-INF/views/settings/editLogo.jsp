@@ -6,7 +6,7 @@
 
   
 
-    <div class="col-sm-8 text-left"> 
+    
       <h1>edit logo</h1>
       <div class="col-sm-8 text-left">
 				<h3>ë³ê²½í  ë¡ê³ ëª ìë ¥</h3>

@@ -3,15 +3,11 @@
 <%@ taglib uri="http://tiles.apache.org/tags-tiles" prefix="tiles"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
-	<div class="container-fluid text-center">
-		<div class="row content">
-			<div class="col-sm-2 sidenav">
+		<!-- 	<div class="col-sm-2 sidenav">
 				  <p><a href="info.jsp">내 정보 변경</a></p>
      			 <p><a href="checkPwBeforeChanePw.jsp">비밀번호 변경</a></p>
      			  <p><a href="#">회원 탈퇴</a></p>
-     			 
-     		 	
-			</div>
+			</div> -->
 			<div class="col-sm-8 text-left">
 				<h3>내정보 변경</h3>
 				<form class="form-horizontal" action="/action_page.php">
