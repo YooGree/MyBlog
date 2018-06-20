@@ -10,24 +10,24 @@
 	<a>목록보기</a>
 </div>
 <hr>
-<!--  ê²ìë¬¼ ë´ì© -->
+<!--  게시물내용 -->
 <div>
 
 	<div class="form-group">
 		<label><a href="#">카테고리명</a></label>
 	</div>
 	<div class="form-group">
-		<label>ê²ìë¬¼ ì ëª©</label> <label>ìì± ì¼ì</label><a>ìì </a><a>ì­ì </a>
+		<label>게시물제목</label> <label>작성일시</label><a>수정</a><a>삭제 </a>
 	</div>
 	<div class="form-group">
 		<textarea class="form-control" name="text" rows="10" cols="60"
-			readonly>ë´ì© </textarea>
+			readonly>내용</textarea>
 	</div>
 
 </div>
 <hr>
 
-<!-- ê²ìë¬¼ ëª©ë¡ -->
+<!-- 게시물제목 -->
 <div>
 	<table class="table table-hover">
 		<tr>
