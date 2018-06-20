@@ -12,7 +12,7 @@ import com.portfolio_spring.myapp.dao.BoardDao;
 public class BoardService {
 	
 	@Autowired
-	private BoardDao dao;
+	private ShareDao dao;
 	
 	public List<Object> getList(String sqlMapId, Object dataMap){
 		

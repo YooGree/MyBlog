@@ -15,7 +15,7 @@
 <!-- 글쓰기 버튼 -->
 <div class="text-center">
 	<a class="btn btn-primary" type="button" id="insert" name="insert"
-		href="<c:url value='/board/edit'/>">ê¸ì°ê¸d°</a>
+		href="<c:url value='/board/edit'/>">포스트쓰기</a>
 </div>
 <!-- /글쓰기 버튼 -->
 </div>
