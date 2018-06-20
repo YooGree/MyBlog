@@ -11,7 +11,7 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public class MemberDao {
+public class ShareDao {
 	
 	@Autowired
 	private SqlSessionTemplate sqlSession;
@@ -30,6 +30,6 @@ public class MemberDao {
 	
 	public void SaveObject(String sqlMapId, Object dataMap) {
 		
-		Integer a = sqlSession.insert(sqlMapId, dataMap);
+		sqlSession.insert(sqlMapId, dataMap);
 	}
 }

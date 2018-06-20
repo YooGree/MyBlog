@@ -6,7 +6,7 @@
 
 			<div class="col-sm-8 text-left">
 				<h3>회원가입</h3>
-				<form role="form" class="form-horizontal" method="POST" action="<c:url value='/signupsubmit' />">
+				<form role="form" class="form-horizontal" method="POST" action="<c:url value='/member/signupsubmit' />">
 					<div class="form-group">
 						<label class="control-label col-sm-2">회원 시퀀스:</label>
 						<div class="col-sm-10">

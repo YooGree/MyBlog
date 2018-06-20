@@ -27,7 +27,7 @@
 			<div class="col-sm-offset-2 col-sm-10">
 				<div class="checkbox">
 					<label><input type="checkbox" name="remember">
-						Remember me</label> &nbsp&nbsp <a href="./signup.jsp">회원가입</a>
+						Remember me</label> &nbsp&nbsp <a href="<c:url value='/member/signup'/>">회원가입</a>
 				</div>
 			</div>
 

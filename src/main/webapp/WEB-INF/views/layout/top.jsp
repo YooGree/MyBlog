@@ -2,6 +2,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 
 <!-- navbar top -->
+
 <nav class="navbar navbar-inverse navbar-fixed-top">
 	<div id="navbar_container" class="container-fluid">
 		<div class="navbar-header">
@@ -15,8 +16,8 @@
 		<div class="collapse navbar-collapse" id="myNavbar">
 			<ul class="nav navbar-nav">
 				<li><a href="<c:url value='/'/>">Home</a></li>
-				<li><a href="<c:url value='/mypage'/>">MyPage</a></li>
-				<li><a href="<c:url value='/setting' />">Setting</a></li>
+				<li><a href="<c:url value='/member/mypage'/>">MyPage</a></li>
+				<li><a href="<c:url value='/settings/setting' />">Setting</a></li>
 				<li><a href="<c:url value='/search' />">Search</a></li>
 
 			</ul>
@@ -30,8 +31,8 @@
 				<%
 					} else {
 				%>
-				<li><a href="<c:url value='/login' />"> Login</a></li>
-				<li><a href="<c:url value='/signup'/>"> Sign up</a></li>
+				<li><a href="<c:url value='/member/login' />"> Login</a></li>
+				<li><a href="<c:url value='/member/signup'/>"> Sign up</a></li>
 				<%
 					}
 				%>
