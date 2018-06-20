@@ -2,7 +2,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 
 
-<div class="sidenav">
+<div class="fixed_side">
 	<div class="well">
 		<p>ADS</p>
 	</div>

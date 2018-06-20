@@ -13,15 +13,15 @@
 
 		<tiles:insertAttribute name="layout.top" />
 	
-		<div id="main_body" class="container-fluid">
+		<div class="container-fluid">
 		
-			<div class="col-sm-2">
+			<div id="main_left" class="col-sm-2">
 				<tiles:insertAttribute name="layout.left" />
 			</div>
-			<div class="col-sm-8">
+			<div id="main_body" class="col-sm-8">
 				<tiles:insertAttribute name="layout.body" />
 			</div>
-			<div class="col-sm-2">
+			<div id="main_right" class="col-sm-2">
 				<tiles:insertAttribute name="layout.right" />
 			</div>
 	

@@ -3,56 +3,100 @@
 <%@ taglib uri="http://tiles.apache.org/tags-tiles" prefix="tiles"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
-<div class="form-group">
-	<a class="btn btn-primary" type="button" id="insert" name="insert" href="<c:url value='/board/edit'/>">글쓰기</a>
+
+<!-- 목록보기 collapse -->
+<div class="panel panel-default">
+	<div class="panel-body">
+		<h5 class="col-sm-10">Food</h5>
+		<button id="cate_names" type="button" class="btn col-sm-2"
+			data-toggle="collapse" data-target="#demo">목록보기</button>
+	</div>
+
+	<div id="demo" class="panel-body collapse list-group">
+		<a href="#" class="list-group-item">불닭볶음면 <span class="badge">12</span> </a> 
+		<a href="#"	class="list-group-item">쌀국수 <span class="badge">12</span> </a> 
+		<a href="#" class="list-group-item">매일두유 <span class="badge">12</span> </a>
+	</div>
 </div>
-<div class="form-group">
-	<a>목록보기</a>
-</div>
-<hr>
+<!-- /목록보기 collapse -->
+
 <!--  게시물내용 -->
-<div>
+<div id="board_content" class="panel panel-default">
 
-	<div class="form-group">
-		<label><a href="#">카테고리명</a></label>
+	<div class="text-center">
+		<h5>Food</h5>
 	</div>
-	<div class="form-group">
-		<label>게시물제목</label> <label>작성일시</label><a>수정</a><a>삭제 </a>
+
+	<div class="text-center">
+		<h2>만두 그라탕</h2>
 	</div>
-	<div class="form-group">
-		<textarea class="form-control" name="text" rows="10" cols="60"
-			readonly>내용</textarea>
+
+	<div class="row">
+		<p class="col-sm-2 text-center">2018-06-20</p>
+		<div class="col-sm-8"></div>
+		<div class="col-sm-2 text-center">
+			<a>수정</a> <a>삭제</a>
+		</div>
+	</div>
+
+	<div class="well">
+	<p>
+		Contrary to popular belief, Lorem Ipsum is not
+		simply random text. It has roots in a piece of classical Latin
+		literature from 45 BC, making it over 2000 years old. Richard
+		McClintock, a Latin professor at Hampden-Sydney College in Virginia,
+		looked up one of the more obscure Latin words, consectetur, from a
+		Lorem Ipsum passage, and going through the cites of the word in
+		classical literature, discovered the undoubtable source. Lorem Ipsum
+		comes from sections 1.10.32 and 1.10.33 of "de Finibus Bonorum et
+		Malorum" (The Extremes of Good and Evil) by Cicero, written in 45 BC.
+		This book is a treatise on the theory of ethics, very popular during
+		the Renaissance. The first line of Lorem Ipsum, "Lorem ipsum dolor sit
+		amet..", comes from a line in section 1.10.32.
+	</p>
+	<img src='<c:url value='/resources/image/mandu.jpg' />'>
+	<p>
+		Contrary to popular belief, Lorem Ipsum is not
+		simply random text. It has roots in a piece of classical Latin
+		literature from 45 BC, making it over 2000 years old. Richard
+		McClintock, a Latin professor at Hampden-Sydney College in Virginia,
+		looked up one of the more obscure Latin words, consectetur, from a
+		Lorem Ipsum passage, and going through the cites of the word in
+		classical literature, discovered the undoubtable source. Lorem Ipsum
+		comes from sections 1.10.32 and 1.10.33 of "de Finibus Bonorum et
+		Malorum" (The Extremes of Good and Evil) by Cicero, written in 45 BC.
+		This book is a treatise on the theory of ethics, very popular during
+		the Renaissance. The first line of Lorem Ipsum, "Lorem ipsum dolor sit
+		amet..", comes from a line in section 1.10.32.
+	</p>
 	</div>
 
 </div>
-<hr>
 
-<!-- 게시물제목 -->
-<div>
-	<table class="table table-hover">
-		<tr>
-			<td><a href="#">list 01 title</a></td>
-			<td>2018-05-16</td>
-		</tr>
-		<tr>
-			<td><a href="#">list 02 title</a></td>
-			<td>2018-05-16</td>
-		</tr>
-		<tr>
-			<td><a href="#">list 03 title</a></td>
-			<td>2018-05-16</td>
-		</tr>
-		<tr>
-			<td><a href="#">list 04 title</a></td>
-			<td>2018-05-16</td>
-		</tr>
-		<tr>
-			<td><a href="#">list 05 title</a></td>
-			<td>2018-05-16</td>
-		</tr>
 
-	</table>
+
+
+<!-- 댓글 collapse-->
+<div class="panel panel-default">
+	<div class="panel-body">
+		<h5 class="col-sm-10">Food</h5>
+		<button id="cate_names" type="button" class="btn col-sm-2"
+			data-toggle="collapse" data-target="#demo_comments">댓글보기</button>
+	</div>
+
+	<div id="demo_comments" class="panel-body collapse list-group">
+		<a href="#" class="list-group-item">불닭볶음면 </a> 
+		<a href="#"	class="list-group-item">쌀국수</a> 
+		<a href="#" class="list-group-item">매일두유</a>
+	</div>
 </div>
+
+<!-- / 댓글 collapse-->
+
+
+
+
+
 <div>
 	<ul class="pagination">
 		<li class="page-item disabled"><a class="page-link" href="#">&laquo;</a>
