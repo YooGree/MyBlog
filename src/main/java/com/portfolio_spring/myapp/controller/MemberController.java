@@ -39,7 +39,6 @@ public class MemberController {
 		Map<String, Object> resultMap = new HashMap<String, Object>();
 		// 데이터 여러개를 받아오면 리스트를 쓴다.
 		List<Object> resultList = new ArrayList<Object>();
-		System.out.println(action);
 		
 		// 회원 가입 화면
 		if ("signup".equalsIgnoreCase(action)) {

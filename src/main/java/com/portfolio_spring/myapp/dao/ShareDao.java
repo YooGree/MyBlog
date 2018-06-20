@@ -32,4 +32,5 @@ public class ShareDao {
 		
 		sqlSession.insert(sqlMapId, dataMap);
 	}
+	
 }

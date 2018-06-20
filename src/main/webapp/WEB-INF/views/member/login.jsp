@@ -7,8 +7,13 @@
 <div class="col-sm-8 text-left">
 
 	<h3>로그인</h3>
-	<form class="form-horizontal" action="/portfolio/loginStatus.jsp"
-		method="post">
+	<c:if test="${not empty param.fail }">
+	<!-- <p style="color: red" align="center">로그인 실패</p> -->
+		<script>
+		alert("로그인 실패");
+		</script>
+	</c:if>
+	<form class="form-horizontal" action="<c:url value='/j_spring_security_check'/>" method="POST">
 		<div class="form-group">
 			<label class="control-label col-sm-2" for="email">이메일:</label>
 			<div class="col-sm-10">
@@ -19,8 +24,8 @@
 		<div class="form-group">
 			<label class="control-label col-sm-2" for="pwd">비밀번호:</label>
 			<div class="col-sm-10">
-				<input type="password" class="form-control" id="pwd"
-					placeholder="Enter password" name="pwd">
+				<input type="password" class="form-control" id="password"
+					placeholder="Enter password" name="password">
 			</div>
 		</div>
 		<div class="form-group">

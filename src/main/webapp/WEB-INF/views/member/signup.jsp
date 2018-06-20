@@ -89,7 +89,7 @@
 
 					<div class="form-group">
 						<div class="col-sm-offset-2 col-sm-10">
-							<button type="submit" class="btn btn-default">Submit</button>
+							<button type="submit" class="btn btn-default" onclick="alert('회원가입 완료')">Submit</button>
 						</div>
 					</div>
 				</form>

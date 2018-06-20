@@ -18,24 +18,14 @@
 				<li><a href="<c:url value='/'/>">Home</a></li>
 				<li><a href="<c:url value='/member/mypage'/>">MyPage</a></li>
 				<li><a href="<c:url value='/settings/setting' />">Setting</a></li>
-				<li><a href="<c:url value='/search' />">Search</a></li>
+				<li><a href="<c:url value='/board/search' />">Search</a></li>
 
 			</ul>
 			<ul class="nav navbar-nav navbar-right">
-				<%
-					String user = (String) session.getAttribute("userID");
-					String host = request.getContextPath();
-					if (user != null) {
-				%>
-				<li><a href="<%=host%>/sessions/logout.jsp"><%=user%></a></li>
-				<%
-					} else {
-				%>
+				<li><c:set var="principalName" value="${pageContext.request.userPrincipal.name}"/>
+               	<a href="<c:url value='/j_spring_security_logout' />">${principalName}</a></li>
 				<li><a href="<c:url value='/member/login' />"> Login</a></li>
 				<li><a href="<c:url value='/member/signup'/>"> Sign up</a></li>
-				<%
-					}
-				%>
 			</ul>
 		</div>
 	</div>
