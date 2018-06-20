@@ -6,6 +6,16 @@
 
 <mapper namespace="board">
 	<select id="list" resultType="Map" parameterType="Map">
+	select
+		BOARD_SEQ
+		, BOARD_TITLE
+		, BOARD_CONT
+		, BOARD_VIS
+		, BOARD_DATE
+		, CATEGORY_SEQ
+		, MEMBER_SEQ
+		from BOARD
+		order by BOARD_DATE
 	</select>
 	<select id="read" resultType="Map" parameterType="Map">
 		select
@@ -17,7 +27,7 @@
 		, CATEGORY_SEQ
 		, MEMBER_SEQ
 		from BOARD
-		where BOARD_SEQ = #{BOARD_SEQ}
+		where BOARD_SEQ = 'ed399399747b47f2b48bc5ad7eb6e663'
 	</select>
 	<insert id="merge" parameterType="Map">
 	</insert>

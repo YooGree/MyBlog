@@ -1,48 +1,7 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://tiles.apache.org/tags-tiles" prefix="tiles"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-
-
-<!-- 목록보기 collapse -->
-<div class="nav panel panel-default">
-	<div class="panel-body">
-		<h5 class="col-sm-10">Food</h5>	
-		<button id="cate_names" type="button" class="btn col-sm-2"
-			data-toggle="collapse" data-target="#demo">목록보기</button>
-	</div>
-
-	<div id="demo" class="panel-body collapse list-group">
-		<c:forEach items="${resultList}" var="resultData" varStatus="loop">
-			<div class="${(loop.index+1)%2 == 2 ? 'odd gradeX' : 'even gradeC'}">
-				<!--<c:url value="/board/read?MEMBER_SEQ=${resultData.MEMBER_SEQ}" /> -->
-				<a href="#" class="list-group-item">
-					${resultData.BOARD_TITLE} 
-				<span class="badge">12</span>
-				</a>
-
-			</div>
-		</c:forEach>
-		<div class="text-center">
-			<ul class="pagination">
-				<li class="page-item disabled"><a class="page-link" href="#">&laquo;</a>
-				</li>
-				<li class="page-item active"><a class="page-link" href="#">1</a>
-				</li>
-				<li class="page-item"><a class="page-link" href="#">2</a></li>
-				<li class="page-item"><a class="page-link" href="#">3</a></li>
-				<li class="page-item"><a class="page-link" href="#">4</a></li>
-				<li class="page-item"><a class="page-link" href="#">5</a></li>
-				<li class="page-item"><a class="page-link" href="#">&raquo;</a></li>
-			</ul>
-		</div>
-
-	</div>
-</div>
-<!-- /목록보기 collapse -->
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 
 <!--  게시물내용 -->
-<%-- <tiles:insertAttribute name="layout.content" /> --%>
 <div id="board_content" class="panel panel-default">
 
 	<div class="text-center">
@@ -109,20 +68,3 @@
 	<!-- / 댓글 collapse-->
 </div>
 <!--  / 게시물내용 -->
-
-<!-- pagination -->
-<div class="text-center">
-	<ul class="pagination">
-		<li class="page-item disabled"><a class="page-link" href="#">&laquo;</a>
-		</li>
-		<li class="page-item active"><a class="page-link" href="#">1</a>
-		</li>
-		<li class="page-item"><a class="page-link" href="#">2</a></li>
-		<li class="page-item"><a class="page-link" href="#">3</a></li>
-		<li class="page-item"><a class="page-link" href="#">4</a></li>
-		<li class="page-item"><a class="page-link" href="#">5</a></li>
-		<li class="page-item"><a class="page-link" href="#">&raquo;</a></li>
-	</ul>
-</div>
-<!-- / pagination -->
-

@@ -18,7 +18,7 @@
 				<li><a href="<c:url value='/'/>">Home</a></li>
 				<li><a href="<c:url value='/member/mypage'/>">MyPage</a></li>
 				<li><a href="<c:url value='/settings/setting' />">Setting</a></li>
-				<li><a href="<c:url value='/search' />">Search</a></li>
+				<li><a href="<c:url value='/board/search' />">Search</a></li>
 
 			</ul>
 			<ul class="nav navbar-nav navbar-right">
