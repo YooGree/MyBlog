@@ -44,15 +44,20 @@ public class BoardController {
 		// 글쓰기
 		if ("edit".equalsIgnoreCase(action)) {
 			viewName = viewName + action;
-			/*paramMap.put("commonUtil", commonUtil.getUniqueSequence()); // 기본 시퀀스를 자동으로 만들고
-			sqlMapId = "user.signup"; // user라는 이름을 가진 sqlmap의 signup으로 가서 쿼리문을 가져온다.
+			/*sqlMapId = "board.insert"; // user라는 이름을 가진 sqlmap의 signup으로 가서 쿼리문을 가져온다.
+			paramMap.put("commonUtil", commonUtil.getUniqueSequence()); // 기본 시퀀스를 자동으로 만들고
 			service.SaveObject(sqlMapId, paramMap);*/ // 가져온 쿼리문과 시퀀스를 서비스로 보낸다.
 		// 글읽기	
 		} else if ("list".equalsIgnoreCase(action)) {
 			viewName = viewName + action;			
-			/*sqlMapId = "user.myinfo";
-			resultMap = service.getObject(sqlMapId, paramMap);*/
+			sqlMapId = "board.read";
+			resultMap = service.getObject(sqlMapId, paramMap);
+		} else if ("insert".equalsIgnoreCase(action)) {
+			viewName = viewName + "list";			
+			sqlMapId = "board.insert";
+			resultMap = service.getObject(sqlMapId, paramMap);
 		}
+		
 
 		modelandView.setViewName(viewName);
 

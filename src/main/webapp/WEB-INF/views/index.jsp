@@ -3,52 +3,58 @@
 <%@ taglib uri="http://tiles.apache.org/tags-tiles" prefix="tiles"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
-            <h1>Welcome</h1>
+<div class="jumbotron text-center">
+	<h1>Yoo Gree's Blog</h1>
+	<p>Bootstrap is the most popular HTML, CSS, and JS framework for
+		developing responsive, mobile-first projects on the web.</p>
+</div>
 
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
-               do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
-               enim ad minim veniam, quis nostrud exercitation ullamco laboris
-               nisi ut aliquip ex ea commodo consequat. Excepteur sint occaecat
-               cupidatat non proident, sunt in culpa qui officia deserunt mollit
-               anim id est laborum consectetur adipiscing elit, sed do eiusmod
-               tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
-               minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-               aliquip ex ea commodo consequat.</p>
-            <a class="btn btn-primary" type="button" id="insert"
-               name="insert"
-               href="<c:url value='/board/edit'/>">글쓰기</a>
-            
+<!-- 베스트 사진 목록 -->
 
-            <p>조회수 많은 게시물 리스트</p>
-            <!-- 게시물 목록 -->
-            <div>
-               <table class="table table-hover">
-                  <tr>
-                     <td><a href="#">list 01 title</a></td>
-                     <td>2018-05-16</td>
-                  </tr>
-                  <tr>
-                     <td><a href="#">list 02 title</a></td>
-                     <td>2018-05-16</td>
-                  </tr>
-                  <tr>
-                     <td><a href="#">list 03 title</a></td>
-                     <td>2018-05-16</td>
-                  </tr>
-                  <tr>
-                     <td><a href="#">list 04 title</a></td>
-                     <td>2018-05-16</td>
-                  </tr>
-                  <tr>
-                     <td><a href="#">list 05 title</a></td>
-                     <td>2018-05-16</td>
-                  </tr>
+	<div class="panel panel-default panel-body text-center">
+		<h4>Yoo Gree's Best Photos</h4>
+		<hr>
+		<div class="row">
+			      <div class="col-sm-4">
+        <div class="thumbnail">
+          <img src="<c:url value='/resources/image/mandu.jpg' />" alt="Paris">
+          <p><strong>Mandu</strong></p>
+          <p>Friday 27 November 2015</p>
+        </div>
+      </div>
+      <div class="col-sm-4">
+        <div class="thumbnail">
+          <img src="<c:url value='/resources/image/cat.jpg' />" alt="New York">
+          <p><strong>Cat</strong></p>
+          <p>Saturday 28 November 2015</p>
+        </div>
+      </div>
+      <div class="col-sm-4">
+        <div class="thumbnail">
+          <img src="<c:url value='/resources/image/mandu.jpg' />" alt="San Francisco">
+          <p><strong>Mandu</strong></p>
+          <p>Sunday 29 November 2015</p>
+        </div>
+      </div>
+		</div>
+	</div>
+<!-- / 베스트 사진 목록 -->
 
-               </table>
-            </div>
-           
+<!-- 베스트 게시물 목록 -->
+
+	<div class="panel panel-default panel-body">
+		<h4 align="center">Yoo Gree's Best Posts</h4>
+		<div class="list-group">
+			<a href="#" class="list-group-item">First item</a> 
+			<a href="#"	class="list-group-item">Second item</a> 
+			<a href="#"	class="list-group-item">Third item</a>
+		</div>
+	</div>
+<!-- / 베스트 게시물 목록 -->
 
 
-       
-        
+
+
+
+
 
