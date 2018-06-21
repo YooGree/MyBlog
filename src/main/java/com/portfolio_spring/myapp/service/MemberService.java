@@ -26,9 +26,23 @@ public class MemberService {
 		return resultMap;	
 	}
 	
+	// 회원 가입 
 	public void SaveObject(String sqlMapId, Object dataMap) {
 		
 		dao.SaveObject(sqlMapId, dataMap);
 	}
+	
+	// 회원 업데이트
+	public void UpdateObject(String sqlMapId, Object dataMap) {
+		
+		dao.UpdateObject(sqlMapId, dataMap);
+	}
+	
+	// 회원 탈퇴
+	public void DeleteObject(String sqlMapId, Object dataMap) {
+		
+		dao.DeleteObject(sqlMapId, dataMap);
+	}
+	
 	
 }

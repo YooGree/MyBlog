@@ -43,18 +43,29 @@ public class MemberController {
 		// 회원 가입 화면
 		if ("signup".equalsIgnoreCase(action)) {
 			viewName = viewName+"signup";	
-			paramMap.put("commonUtil", commonUtil.getUniqueSequence());
+//			paramMap.put("commonUtil", commonUtil.getUniqueSequence());
 		// 회원 가입 화면에서 데이터 넘기기
-		} else if ("signupsubmit".equalsIgnoreCase(action)) {
+		} else if ("insert".equalsIgnoreCase(action)) {
 			viewName = viewName+"login";
-			sqlMapId = "user.signup"; 
+			sqlMapId = "user.insert"; 
 			service.SaveObject(sqlMapId, paramMap); 
 		// 내 정보
 		} else if ("mypage".equalsIgnoreCase(action)) {
 			viewName = "/mypage/mypage";
-		} else if ("login".equalsIgnoreCase(action)) {
-			viewName = "/member/login";
+			sqlMapId = "user.myinfo";
+			resultMap = service.getObject(sqlMapId, paramMap);
+		} else if ("update".equalsIgnoreCase(action)) {
+			viewName = "/mypage/mypage";
+			sqlMapId = "user.update";
+			service.UpdateObject(sqlMapId, paramMap);
+		} else if ("delete".equalsIgnoreCase(action)) {
+			viewName = "/mypage/mypage";
+			sqlMapId = "user.delete";
+			service.DeleteObject(sqlMapId, paramMap);
 		}
+		else if ("login".equalsIgnoreCase(action)) {
+			viewName = "/member/login";
+		} 
 
 		modelandView.setViewName(viewName);
 

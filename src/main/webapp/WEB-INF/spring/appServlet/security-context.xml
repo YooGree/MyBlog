@@ -18,22 +18,21 @@
 
 		<logout logout-success-url="/" logout-url="/j_spring_security_logout" invalidate-session="true" delete-cookies="JSESSIONID"/>
 		<csrf disabled="true"/>
-		 
 	</http>
 	
 	<authentication-manager>
 		<authentication-provider>
-			<user-service>
+<!-- 			<user-service>
 				<user name="user@aa" password="user" authorities="ROLE_USER" />
-				<user name="admin@aa" password="admin" authorities="ROLE_ADMIN" />
-			</user-service>
-<!-- 	<jdbc-user-service data-source-ref="dataSource"	
+				<user name="admin@aa" password="admin" authorities="ROLE_ADMIN" /> 
+			</user-service> -->
+  		<jdbc-user-service data-source-ref="dataSource"	
 		users-by-username-query="select MEMBER_SEQ as username, MEMBER_PW as password, 1 as enable
 								from MEMBER
 								where MEMBER_ID = ?"
-		authorities-by-username-query="select m.MEMBER_SEQ as username, a.AUT_NAME as authority	
-									from MEMBER m, MEM_AUT_REL r, AUTHORITY a
-									where m.MEMBER_SEQ = r.MEMBER_SEQ and r.AUT_SEQ = a.AUT_SEQ and m.MEMBER_SEQ = ?" /> -->
+		authorities-by-username-query="select m.MEMBER_SEQ as username, a.AUT_NAME as authority
+									from MEM_AUT_REL m, AUTHORITY a
+									where m.AUT_SEQ = a.AUT_SEQ and m.MEMBER_SEQ = ?"/> 
 		</authentication-provider>
 	</authentication-manager>
 	

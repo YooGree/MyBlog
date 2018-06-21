@@ -12,6 +12,9 @@
 		<property name="url" value="jdbc:oracle:thin:@70.12.115.70:1521:orcl" />
 		<property name="username" value="myblog" />
 		<property name="password" value="1234" />
+		<property name="minIdle" value='0'/>
+		<property name="maxIdle" value='2'/>
+		<property name="maxActive" value='5'/>
 	</bean>
 
 	<bean id="propertyConfigurer"

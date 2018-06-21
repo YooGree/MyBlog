@@ -6,13 +6,7 @@
 
 			<div class="col-sm-8 text-left">
 				<h3>회원가입</h3>
-				<form role="form" class="form-horizontal" method="POST" action="<c:url value='/member/signupsubmit' />">
-					<div class="form-group">
-						<label class="control-label col-sm-2">회원 시퀀스:</label>
-						<div class="col-sm-10">
-							<input type="text" class="form-control" name="MEMBER_SEQ" value="${paramMap.commonUtil}"></input>
-						</div>
-					</div>
+				<form role="form" class="form-horizontal" method="POST" action="<c:url value='/member/insert' />"  onsubmit="return valid_password(this);">
 					<div class="form-group">
 						<label class="control-label col-sm-2" for="email">이메일 주소:</label>
 						<div class="col-sm-10">
@@ -22,19 +16,19 @@
 					<div class="form-group">
 						<label class="control-label col-sm-2" for="email">이름:</label>
 						<div class="col-sm-10">
-							<input type="text" class="form-control" id="name" placeholder="your name" name="MEMBER_NAME">
+							<input type="text" class="form-control" id="MEMBER_NAME" placeholder="your name" name="MEMBER_NAME">
 						</div>
 					</div>
 					<div class="form-group">
 						<label class="control-label col-sm-2" for="pwd">비밀번호:</label>
 						<div class="col-sm-10">
-							<input type="password" class="form-control" id="pwd"placeholder="password" name="MEMBER_PW">
+							<input type="password" class="form-control" id="MEMBER_PW" placeholder="password" name="MEMBER_PW">
 						</div>
 					</div>
 					<div class="form-group">
 						<label class="control-label col-sm-2" for="pwd">비밀번호 확인:</label>
 						<div class="col-sm-10">
-							<input type="password" class="form-control" id="pwd2" placeholder="password" name="MEMBER_PW2">
+							<input type="password" class="form-control" id="MEMBER_PW2" placeholder="password" name="MEMBER_PW2">
 						</div>
 					</div>
 					<div class="form-group">
@@ -53,12 +47,12 @@
 					<div class="form-group">
 						<label class="control-label col-sm-2" for="pwd">취미:</label>
 						<div class="col-sm-10">
-							<select  class="form-control" id="hobby" placeholder="hobby" name="hobby">
+							<select  class="form-control" id="hobby" placeholder="hobby" name="HOBBY_SEQ">
 								<option>선택하시오</option>
-								<option>운동</option>
-								<option>독서</option>
-								<option>영화감상</option>
-								<option>기타</option>
+								<option value="1">운동</option>
+								<option value="2">독서</option>
+								<option value="3">영화감상</option>
+								<option value="4">기타</option>
 							</select>
 						</div>
 					</div>
@@ -89,8 +83,19 @@
 
 					<div class="form-group">
 						<div class="col-sm-offset-2 col-sm-10">
-							<button type="submit" class="btn btn-default" onclick="alert('회원가입 완료')">Submit</button>
+							<button type="submit" class="btn btn-default">Submit</button>
 						</div>
 					</div>
 				</form>
+				<script>
+					function valid_password(form) {
+						if (form.MEMBER_PW.value == form.MEMBER_PW2.value) {
+							alert("회원가입 완료.");
+							return true;
+						}
+						form.MEMBER_PW2.focus();
+						alert("비밀번호를 확인해주세요.");
+						return false;
+					}
+				</script>
 			</div>

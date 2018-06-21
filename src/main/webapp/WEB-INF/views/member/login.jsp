@@ -14,6 +14,7 @@
 		</script>
 	</c:if>
 	<form class="form-horizontal" action="<c:url value='/j_spring_security_check'/>" method="POST">
+		<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}">
 		<div class="form-group">
 			<label class="control-label col-sm-2" for="email">이메일:</label>
 			<div class="col-sm-10">
