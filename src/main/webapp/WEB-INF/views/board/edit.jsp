@@ -13,11 +13,11 @@
 		
 		<!-- BOARD_SEQ,  BOARD_DATE-->
 		<div class="form-group row">
-			<div class="col-sm-6">
+			<%-- <div class="col-sm-6">
 				<label for="staticEmail" class="col-form-label">BOARD_SEQ</label> <input
 					name="BOARD_SEQ" type="text" class="form-control" id="staticEmail"
 					value="${paramMap.BOARD_SEQ}" readonly>
-			</div>
+			</div> --%>
 			<div class="col-sm-6">
 				<label for="staticEmail" class="col-form-label">BOARD_DATE</label> 
 				<input name="BOARD_DATE" type="text" class="form-control" id="staticEmail"
@@ -30,7 +30,7 @@
 		<div class="form-group row">
 			<label for="staticEmail" class="col-form-label">작성자</label>
 			<input name="MEMBER_SEQ" type="text" readonly class="form-control"
-				id="staticEmail" value="1111" >
+				id="staticEmail" value="1001" >
 		</div>
 		<!-- / 작성자 -->
 		

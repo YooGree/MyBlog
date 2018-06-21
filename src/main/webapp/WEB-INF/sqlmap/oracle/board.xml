@@ -15,19 +15,65 @@
 		, CATEGORY_SEQ
 		, MEMBER_SEQ
 		from BOARD
-		order by BOARD_DATE
+		order by BOARD_SEQ desc
 	</select>
+	
 	<select id="read" resultType="Map" parameterType="Map">
 		select
-		BOARD_SEQ
-		, BOARD_TITLE
-		, BOARD_CONT
-		, BOARD_VIS
-		, BOARD_DATE
-		, CATEGORY_SEQ
-		, MEMBER_SEQ
-		from BOARD
-		where BOARD_SEQ = 'ed399399747b47f2b48bc5ad7eb6e663'
+		b.BOARD_SEQ
+		, b.BOARD_TITLE
+		, b.BOARD_CONT
+		, b.BOARD_VIS
+		, b.BOARD_DATE
+		, b.CATEGORY_SEQ
+		, b.MEMBER_SEQ
+		, c.CATEGORY_NAME
+		
+		from BOARD b, CATEGORY c
+		
+		where 
+		b.CATEGORY_SEQ = c.CATEGORY_SEQ
+		and
+		b.BOARD_TITLE = '테스트'
+		
+	</select>
+	<select id="read2" resultType="Map" parameterType="Map">
+		select
+		b.BOARD_SEQ
+		, b.BOARD_TITLE
+		, b.BOARD_CONT
+		, b.BOARD_VIS
+		, b.BOARD_DATE
+		, b.CATEGORY_SEQ
+		, b.MEMBER_SEQ
+		, c.CATEGORY_NAME
+		
+		from BOARD b, CATEGORY c
+		
+		where 
+		b.CATEGORY_SEQ = c.CATEGORY_SEQ
+		and
+		b.BOARD_TITLE = #{BOARD_TITLE}
+		
+	</select>
+	<select id="read3" resultType="Map" parameterType="Map">
+		select
+		b.BOARD_SEQ
+		, b.BOARD_TITLE
+		, b.BOARD_CONT
+		, b.BOARD_VIS
+		, b.BOARD_DATE
+		, b.CATEGORY_SEQ
+		, b.MEMBER_SEQ
+		, c.CATEGORY_NAME
+		
+		from BOARD b, CATEGORY c
+		
+		where 
+		b.CATEGORY_SEQ = c.CATEGORY_SEQ
+		and
+		b.BOARD_SEQ = (select max(BOARD_SEQ) from BOARD)
+		
 	</select>
 	<insert id="merge" parameterType="Map">
 	</insert>
@@ -43,7 +89,7 @@
 		, MEMBER_SEQ
 		)
 		values(
-		#{BOARD_SEQ}
+		BO_SEQ.nextval
 		, #{BOARD_TITLE}
 		, #{BOARD_CONT}
 		, #{BOARD_VIS}
