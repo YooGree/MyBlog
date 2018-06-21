@@ -16,6 +16,7 @@
 		<div class="collapse navbar-collapse" id="myNavbar">
 			<ul class="nav navbar-nav">
 				<li><a href="<c:url value='/'/>">Home</a></li>
+				<li><a href="<c:url value='/board/list'/>">Board</a></li>
 				<li><a href="<c:url value='/member/mypage'/>">MyPage</a></li>
 				<li><a href="<c:url value='/settings/setting' />">Setting</a></li>
 				<li><a href="<c:url value='/board/search' />">Search</a></li>

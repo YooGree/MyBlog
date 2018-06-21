@@ -25,9 +25,6 @@ public class BoardController {
 	@Autowired
 	private BoardService service;
 	
-	// 시퀀스 관련 Autowired
-	@Autowired
-	private CommonUtil commonUtil;
 	
 	// 날짜관련 Autowired
 	@Autowired
@@ -46,18 +43,15 @@ public class BoardController {
 		Map<String, Object> resultMap = new HashMap<String, Object>();
 		// 데이터 여러개를 받아오면 리스트를 쓴다.
 		List<Object> resultList = new ArrayList<Object>();
-		System.out.println(action);
 		
 		// 글쓰기
 		if ("edit".equalsIgnoreCase(action)) {
 			viewName = viewName + action;
-			paramMap.put("BOARD_SEQ", commonUtil.getUniqueSequence()); // 기본 시퀀스를 자동으로 만들고
 			paramMap.put("BOARD_DATE", dateUtil.getSysdate()); // 오늘 날짜를 자동으로 만들고
 			
 		// 글읽기	
 		} else if ("list".equalsIgnoreCase(action)) {
 			viewName = viewName + action;			
-			
 			resultList = service.getList("board.list", paramMap);
 			resultMap = service.getObject("board.read", paramMap);
 			
@@ -70,7 +64,7 @@ public class BoardController {
 			resultMap = service.getObject("board.read", paramMap);
 		} else if("search".equalsIgnoreCase(action)){
 			viewName = viewName + action;
-		}
+		} 
 		
 
 		modelandView.setViewName(viewName);
