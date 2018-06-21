@@ -16,6 +16,7 @@
 			<c:set var="principalName" value="${pageContext.request.userPrincipal.name}"/>
 			<ul class="nav navbar-nav">
 				<li><a href="<c:url value='/'/>">Home</a></li>
+				<li><a href="<c:url value='/board/list'/>">Board</a></li>
 				<li><a href="<c:url value='/member/mypage?MEMBER_SEQ=${principalName}'/>">MyPage</a></li>
 				<li><a href="<c:url value='/settings/setting' />">Setting</a></li>
 				<li><a href="<c:url value='/board/search' />">Search</a></li>
