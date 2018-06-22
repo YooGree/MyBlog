@@ -1,6 +1,8 @@
 package com.portfolio_spring.myapp.controller;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,18 +25,24 @@ public class RestWSController {
 	@RequestMapping(value = "/ws/{action}", 
 			method = { RequestMethod.GET, RequestMethod.POST }, 
 			produces = "application/json")
+	
 	public  Map<String, Object> actionMethod(@RequestParam Map<String, Object> paramMap, @PathVariable String action) {
+		
 		Map<String, Object> resultMap = new HashMap<String, Object>();
+		
+		
 		if ("content".equalsIgnoreCase(action)) {
 			String sqlMapId = "board.read2";
 			resultMap = service.getObject(sqlMapId, paramMap);
+			
 		} else if("firstList".equalsIgnoreCase(action)) {
 			String sqlMapId = "board.read3";
 			resultMap = service.getObject(sqlMapId, paramMap);
-		}
-
+		
+		} 
 		return resultMap;
 	}
-
+	
+	
 	
 }

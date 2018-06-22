@@ -43,6 +43,7 @@ public class BoardController {
 		Map<String, Object> resultMap = new HashMap<String, Object>();
 		// 데이터 여러개를 받아오면 리스트를 쓴다.
 		List<Object> resultList = new ArrayList<Object>();
+		List<Object> commentList = new ArrayList<Object>();
 		
 		// 글쓰기
 		if ("edit".equalsIgnoreCase(action)) {
@@ -54,7 +55,7 @@ public class BoardController {
 			viewName = viewName + action;			
 			resultList = service.getList("board.list", paramMap);
 			resultMap = service.getObject("board.read", paramMap);
-			
+		/*	commentList = service.getList("comment.list", paramMap);*/
 		} else if ("insert".equalsIgnoreCase(action)) {
 			viewName = viewName + "list";			
 			sqlMapId = "board.insert";
@@ -64,7 +65,13 @@ public class BoardController {
 			resultMap = service.getObject("board.read", paramMap);
 		} else if("search".equalsIgnoreCase(action)){
 			viewName = viewName + action;
-		} 
+		} else if ("commentInsert".equalsIgnoreCase(action)) {
+			viewName = viewName + "list";		
+			paramMap.put("COMMENT_DATE", dateUtil.getSysdate());
+			service.SaveObject("comment.insert", paramMap);
+		} else if ("commentList".equals(action)) {
+			commentList = service.getList("comment.list", paramMap);
+		}
 		
 
 		modelandView.setViewName(viewName);
@@ -72,6 +79,7 @@ public class BoardController {
 		modelandView.addObject("paramMap", paramMap);
 		modelandView.addObject("resultMap", resultMap);
 		modelandView.addObject("resultList", resultList);
+		modelandView.addObject("commentList", commentList);
 
 		return modelandView;
 	}

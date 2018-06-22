@@ -19,7 +19,7 @@ var fn_startBoard = function(url, id, params) {
 			formTag += "<p class='col-sm-4 text-center'>"+data.BOARD_DATE+"</p>";
 			formTag += "<div class='col-sm-6'></div><div class='col-sm-2 text-center'><a>수정</a><a>삭제</a></div></div>";
 			formTag += "<hr>";
-			formTag += "<div class='well'>"+data.BOARD_CONT+"</div>";
+			formTag += "<div style='padding: 2%'>"+data.BOARD_CONT+"</div>";
 			
 			$('#'+id).html(formTag);
 		}, 
@@ -35,21 +35,20 @@ $(document).ready(
 				fn_startBoard("<c:url value='/ws/firstList'/>", "setBoardContent");
 			});
 </script>
-
-
 <!-- /첫 화면 ajax -->
 
 <!-- 목록 클릭 ajax -->
 <script>
-function list_click(title){
-	fn_setBoard("<c:url value='/ws/content'/>", "setBoardContent",title); 
+function list_click(seq){
+	fn_setBoard("<c:url value='/ws/content'/>", "setBoardContent",seq); 
+	fn_setComment("<c:url value='/board/commentList'/>", "setBoardComment",seq); 
 }
 
 var fn_setBoard = function(url, id, params) {
 	$.ajax({
 		type : "POST", 
 		url : url, 
-		data : { "BOARD_TITLE" : params }, 
+		data : { "BOARD_SEQ" : params }, 
 		cache: false,
 		success : function(data) {
 			var formTag = "";
@@ -60,8 +59,40 @@ var fn_setBoard = function(url, id, params) {
 			formTag += "<p class='col-sm-4 text-center'>"+data.BOARD_DATE+"</p>";
 			formTag += "<div class='col-sm-6'></div><div class='col-sm-2 text-center'><a>수정</a><a>삭제</a></div></div>";
 			formTag += "<hr>";
-			formTag += "<div class='well'>"+data.BOARD_CONT+"</div>";
+			formTag += "<div style='padding: 2%'>"+data.BOARD_CONT+"</div>";
 			
+			$('#'+id).html(formTag);
+		}, 
+		error : function(xhr, status, exception){
+			alert("Failure \n ("+status+")");
+			return false; 
+		}
+		});
+	}
+	
+var fn_setComment= function(url, id, params) {
+	$.ajax({
+		type : "POST", 
+		url : url, 
+		data : { "BOARD_SEQ" : params }, 
+		cache: false,
+		success : function(data) {
+			var formTag = "";
+			
+			/* $.each(data, function(i, item) {
+					formTag += '<option value="'+item.MEMBER_SEQ+'">'
+							+ item.AUTHORITY_ID;
+				}); */
+			
+			formTag += "<div class='panel-group'>";
+			$.each(data, function(i, item){
+				fomaTag += '<div class="panel panel-default"><div class="panel-heading">';
+				fomaTag += '<span>'+item.MEMBER_NAME+'</span>';
+				fomaTag += '<span>'+item.MEMBER_DATE+'</span></div>';
+				fomaTag += '<div class="panel-body"><p>'+item.COMMENT_CON+'</p></div></div>';
+			});
+			formTag += "</div>";
+
 			$('#'+id).html(formTag);
 		}, 
 		error : function(xhr, status, exception){
@@ -86,7 +117,7 @@ var fn_setBoard = function(url, id, params) {
 	<div id="demo" class="panel-body collapse list-group">
 		<c:forEach items="${resultList}" var="resultData" varStatus="loop">
 			<div class="${(loop.index+1)%2 == 2 ? 'odd gradeX' : 'even gradeC'}">
-				<a id="board_list${loop.index}" href="#" class="list-group-item" onclick="list_click('${resultData.BOARD_TITLE}');">
+				<a id="board_list${loop.index}" href="#" class="list-group-item" onclick="list_click('${resultData.BOARD_SEQ}');">
 					${resultData.BOARD_TITLE} 
 				<span class="badge">12</span>
 				</a>
@@ -142,27 +173,48 @@ var fn_setBoard = function(url, id, params) {
 
 
 	<!-- 댓글 collapse-->
+	<hr>
 	<div class="panel">
 		<div class="panel-body">
 			<button class="btn" data-toggle="collapse"
 				data-target="#demo_comments">댓글보기</button>
 		</div>
 
-		<div id="demo_comments" class="panel-body collapse list-group">
-			<a href="#" class="list-group-item">불닭볶음면 </a> 
-			<a href="#"	class="list-group-item">쌀국수</a> 
-			<a href="#" class="list-group-item">매일두유</a>
-			
-			<hr>
-			<form action="">
-			<div class="form-group">
-				<textarea class="form-control" rows="5" id="comment"></textarea>
+		<!-- 댓글 목록 -->
+		<div id="demo_comments" class="panel-group collapse">
+			<%-- <div class="panel-group">
+				<c:forEach items="${commentList}" var="resultData" varStatus="loop">
+					<div class="${(loop.index+1)%2 == 2 ? 'odd gradeX' : 'even gradeC'}">
+						<div class="panel panel-default">
+							<div class="panel-heading">
+								<span>${resultData.MEMBER_NAME}</span>
+								<span>${resultData.COMMENT_DATE}</span>
+							</div>
+							<div class="panel-body">
+								<p>${resultData.COMMENT_CON}</p>
+							</div>
+						</div>
+					</div>
+				</c:forEach>
+			</div> --%>
+			<div id="setBoardComment"></div>
+				<!-- /댓글 목록 -->
+
+				<hr>
+
+				<!-- 댓글입력 -->
+				<form action="<c:url value='/board/commentInsert' />">
+					<div class="form-group">
+							<input name="BOARD_SEQ" type="hidden" class="form-control" value="${resultMap.BOARD_SEQ }">
+							<input name="BOARD_SEQ" type="hidden" class="form-control" value="${resultMap.BOARD_TITLE}">
+						<textarea name="COMMENT_CON" class="form-control" rows="5" id="comment">${resultMap.BOARD_SEQ }/${resultMap.BOARD_TITLE}</textarea>
+					</div>
+					<button type="submit" class="btn btn-default btn-xs pull-right">저장</button>
+				</form>
+				<!-- /댓글입력 -->
 			</div>
-			<button type="submit" class="btn btn-default btn-xs pull-right">저장</button>
-			</form>
+
 		</div>
-		
-	</div>
 
 	<!-- / 댓글 collapse-->
 </div>

@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+    
+<mapper namespace="comment">
+	<select id="list" resultType="Map" parameterType="Map">
+	select
+		c.COMMENT_SEQ
+		, c.COMMENT_CON
+		, c.BOARD_SEQ
+		, c.COMMENT_DATE
+		, c.MEMBER_SEQ
+		, m.MEMBER_NAME
+		from COMMENTS c, MEMBER m
+		where c.MEMBER_SEQ = m.MEMBER_SEQ
+		and b.BOARD_SEQ = c.BOARD_SEQ
+		and c.BOARD_SEQ = ${BOARD_SEQ}
+		order by COMMENT_SEQ desc
+
+	</select>
+
+	<insert id="merge" parameterType="Map">
+	</insert>
+
+	<insert id="insert" parameterType="Map">
+	INSERT INTO COMMENTS (
+		COMMENT_SEQ
+		, COMMENT_CON
+		, COMMENT_DATE
+		, BOARD_SEQ
+		, MEMBER_SEQ
+		)
+		values(
+		COM_SEQ.nextval
+		, #{COMMENT_CON}
+		, #{COMMENT_DATE}
+		, #{BOARD_SEQ}
+		, '1001'
+		)
+	</insert>
+
+	<update id="update" parameterType="Map">
+	</update>
+
+	<delete id="delete" parameterType="Map">
+	</delete>
+</mapper>

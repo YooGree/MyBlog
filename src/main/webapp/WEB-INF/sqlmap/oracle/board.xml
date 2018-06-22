@@ -53,7 +53,7 @@
 		where 
 		b.CATEGORY_SEQ = c.CATEGORY_SEQ
 		and
-		b.BOARD_TITLE = #{BOARD_TITLE}
+		b.BOARD_SEQ = #{BOARD_SEQ}
 		
 	</select>
 	<select id="read3" resultType="Map" parameterType="Map">
