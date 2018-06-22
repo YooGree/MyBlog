@@ -22,6 +22,7 @@
 					<div class="form-group">
 						<label class="control-label col-sm-2" for="email">이메일 주소:</label>
 						<div class="col-sm-10">
+					 		<input type="hidden" name="AUT_SEQ" value="2">
 							<input type="email" class="form-control" id="email" placeholder="email@example.com" name="MEMBER_ID">
 						</div>
 					</div>

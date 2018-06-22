@@ -7,20 +7,17 @@
 			<div class="col-sm-8 text-left">
 				<h1>Thema Change</h1>
 				<h3>Thema Color Select</h3>
-				<form role="form" class="form-horizontal" onsubmit="return change_thema(this);">
+				<form class="form-horizontal" action="<c:url value='/settings/thema_change'/>">
 					<div class="form-group">
-						Color: <input class="jscolor" name="change" value="B341F2">
+						Color: <input class="jscolor" name="THEMA_COLOR" value="F20000">
 					</div>
 					<div class="form-group">
 						<div class="col-sm-offset-2 col-sm-10">
-						<button type="button" class="btn btn-primary">변경</button>
+						<button type="submit" class="btn btn-primary">변경</button>
 						<button type="button" class="btn btn-default">취소</button>
 						</div>
 					</div>
 				</form>
-				<script>
-					function change_thema(form) {
-						var color = form.change.value; 
-						document.getElementById("footer").style.background-color = color;
-				</script>
+				
+				<a class="btn-default" href="<c:url value='/settings/thema_change?THEMA_COLOR=F20000'/>">a태그 submit</a>
 			</div>

@@ -15,6 +15,12 @@
 		from MEMBER
 		where MEMBER_SEQ = #{MEMBER_SEQ}
 	</select>
+	
+<!--   	<select id="seq" resultType="Integer" parameterMap="Map">
+		select MEMBER_SEQ
+		from MEMBER
+		where MEMBER_ID = #{MEMBER_ID}
+	</select>  -->
 		
 	<insert id="insert" parameterType="Map">
 		insert into MEMBER(
@@ -36,7 +42,25 @@
 		#{HOBBY_SEQ})
 	</insert>
 	
+<!-- 	<insert id="authority" parameterMap="Map">
+		insert into MEM_AUT_REL(
+		AUT_SEQ,
+		MEMBER_SEQ) values (
+		#{AUT_SEQ},
+		#{MEMBER_SEQ}
+		)
+	</insert> -->
+	
 	<update id="update" parameterType="Map">
+		update MEMBER
+		set MEMBER_ID = #{MEMBER_ID},
+		MEMBER_NAME = #{MEMBER_NAME},
+		MEMBER_TEL = #{MEMBER_TEL},
+		MEMBER_BIRTH = #{MEMBER_BIRTH}
+		where MEMBER_SEQ = #{MEMBER_SEQ}
+	</update>
+	
+	<update id="password" parameterType="Map">
 		update MEMBER
 		set MEMBER_ID = #{MEMBER_ID},
 		MEMBER_NAME = #{MEMBER_NAME},
@@ -45,10 +69,15 @@
 		MEMBER_PW = #{MEMBER_PW}
 		where MEMBER_SEQ = #{MEMBER_SEQ}
 	</update>
+	
+	<delete id="delete_aut" parameterType="Map">
+		delete from MEM_AUT_REL
+		where MEMBER_SEQ = #{MEMBER_SEQ}
+	</delete>
 
 	<delete id="delete" parameterType="Map">
 		delete from MEMBER
-		where MEMBER_SEQ = #{ORGANIZATION_SEQ}
+		where MEMBER_SEQ = #{MEMBER_SEQ}
 	</delete>
 	
 </mapper>

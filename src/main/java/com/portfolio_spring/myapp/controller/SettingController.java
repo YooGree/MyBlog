@@ -24,17 +24,20 @@ public class SettingController {
 	public ModelAndView actionMethod(@RequestParam Map<String, Object> paramMap, @PathVariable String action, ModelAndView modelandView) {
 		
 		String viewName = "/settings/";
+		String color = "";
 		String sqlMapId; // sqlmap에 날릴 쿼리문 정의
-		
-		// 데이터 한개를 받아오면 맵을 쓰고
+
 		Map<String, Object> resultMap = new HashMap<String, Object>();
-		// 데이터 여러개를 받아오면 리스트를 쓴다.
 		List<Object> resultList = new ArrayList<Object>();
 
 		if ("setting".equalsIgnoreCase(action)) {
 			viewName = viewName+"setting";	
 		} else if ("thema".equalsIgnoreCase(action)) {
 			viewName = viewName+"editTheme";
+		} else if ("thema_change".equalsIgnoreCase(action)) {
+			color = (String)paramMap.get("THEMA_COLOR");
+			viewName = "/layout/top";
+			
 		} else if ("category".equalsIgnoreCase(action)) {
 			viewName = viewName+"editCate";
 		} else if ("logo".equalsIgnoreCase(action)) {
@@ -46,6 +49,7 @@ public class SettingController {
 		modelandView.addObject("paramMap", paramMap);
 		modelandView.addObject("resultMap", resultMap);
 		modelandView.addObject("resultList", resultList);
+		modelandView.addObject("color", color);
 
 		return modelandView;
 	}

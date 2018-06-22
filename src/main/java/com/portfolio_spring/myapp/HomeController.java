@@ -20,4 +20,10 @@ public class HomeController {
 		return "index";
 	}
 	
+	@RequestMapping(value = "/layout/top", method = {RequestMethod.GET, RequestMethod.POST})
+	public String top(Locale locale, Model model) {
+		
+		return "/layout/top";
+	}
+	
 }

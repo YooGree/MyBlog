@@ -13,6 +13,9 @@
 		alert("비밀번호를 확인해주세요.");
 		return false;
 	}
+	function member_out() {
+		alert("탈퇴 완료");
+	}
 </script>
 
 <div class="col-sm-2 sidenav"></div>
@@ -56,24 +59,21 @@
 		<div class="form-group">
 			<label class="control-label col-sm-2" for="password">변경 비밀번호:</label>
 			<div class="col-sm-10">
-				<input type="password" class="form-control" name="MEMBER_PW"
-					value="">
+				<input type="password" class="form-control" name="MEMBER_PW" value="    ">
 			</div>
 		</div>
 		<div class="form-group">
 			<label class="control-label col-sm-2" for="password">변경 비밀번호
 				재입력:</label>
 			<div class="col-sm-10">
-				<input type="password" class="form-control" name="MEMBER_PW2"
-					value="">
+				<input type="password" class="form-control" name="MEMBER_PW2" value="    ">
 			</div>
 		</div>
 
 		<div class="form-group">
 			<div class="col-sm-offset-2 col-sm-10">
 				<button type="submit" class="btn btn-primary">수정</button>
-				<button type="submit" class="btn btn-primary"
-					formaction="<c:url value=''/>">회원탈퇴</button>
+				<button type="submit" class="btn btn-primary" formaction="<c:url value='/member/delete'/>" onclick="member_out()">회원탈퇴</button>
 			</div>
 		</div>
 	</form>
