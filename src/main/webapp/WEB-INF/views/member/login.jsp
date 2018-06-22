@@ -3,9 +3,7 @@
 <%@ taglib uri="http://tiles.apache.org/tags-tiles" prefix="tiles"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
-
 <div class="col-sm-8 text-left">
-
 	<h3>로그인</h3>
 	<c:if test="${not empty param.fail }">
 	<!-- <p style="color: red" align="center">로그인 실패</p> -->

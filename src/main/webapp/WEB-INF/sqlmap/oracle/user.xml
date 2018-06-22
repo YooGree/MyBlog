@@ -4,19 +4,14 @@
     "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="user">
-
-	<select id="list" resultType="Map" parameterType="Map">
-		select *
-		from CIP_MEMBER
-		order by NAME
-	</select>
 	
 	<select id="myinfo" resultType="Map" parameterType="Map">
 		select MEMBER_SEQ, 
 		MEMBER_ID, 
 		MEMBER_TEL, 
 		MEMBER_BIRTH,
-		MEMBER_NAME
+		MEMBER_NAME,
+		MEMBER_PW
 		from MEMBER
 		where MEMBER_SEQ = #{MEMBER_SEQ}
 	</select>
@@ -46,10 +41,11 @@
 		set MEMBER_ID = #{MEMBER_ID},
 		MEMBER_NAME = #{MEMBER_NAME},
 		MEMBER_TEL = #{MEMBER_TEL},
-		MEMBER_BIRTH = #{MEMBER_BIRTH}
+		MEMBER_BIRTH = #{MEMBER_BIRTH},
+		MEMBER_PW = #{MEMBER_PW}
 		where MEMBER_SEQ = #{MEMBER_SEQ}
 	</update>
-	
+
 	<delete id="delete" parameterType="Map">
 		delete from MEMBER
 		where MEMBER_SEQ = #{ORGANIZATION_SEQ}

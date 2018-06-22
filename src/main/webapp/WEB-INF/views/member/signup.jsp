@@ -4,7 +4,19 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 
-			<div class="col-sm-8 text-left">
+<script>
+	function valid_password(form) {
+		if (form.MEMBER_PW.value == form.MEMBER_PW2.value) {
+			alert("회원가입 완료.");
+			return true;
+		}
+		form.MEMBER_PW2.focus();
+		alert("비밀번호를 확인해주세요.");
+		return false;
+	}
+</script>
+
+		<div class="col-sm-8 text-left">
 				<h3>회원가입</h3>
 				<form role="form" class="form-horizontal" method="POST" action="<c:url value='/member/insert' />"  onsubmit="return valid_password(this);">
 					<div class="form-group">
@@ -87,15 +99,4 @@
 						</div>
 					</div>
 				</form>
-				<script>
-					function valid_password(form) {
-						if (form.MEMBER_PW.value == form.MEMBER_PW2.value) {
-							alert("회원가입 완료.");
-							return true;
-						}
-						form.MEMBER_PW2.focus();
-						alert("비밀번호를 확인해주세요.");
-						return false;
-					}
-				</script>
 			</div>

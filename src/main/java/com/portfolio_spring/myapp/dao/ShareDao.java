@@ -31,6 +31,7 @@ public class ShareDao {
 	public void SaveObject(String sqlMapId, Object dataMap) {
 		
 		sqlSession.insert(sqlMapId, dataMap);
+
 	}
 	
 	public void UpdateObject(String sqlMapId, Object dataMap) {
