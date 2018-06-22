@@ -22,24 +22,24 @@ public class RestWSController {
 	private BoardService service;
 	
 
-	@RequestMapping(value = "/ws/{action}", 
-			method = { RequestMethod.GET, RequestMethod.POST }, 
-			produces = "application/json")
-	
-	public  Map<String, Object> actionMethod(@RequestParam Map<String, Object> paramMap, @PathVariable String action) {
+	@RequestMapping(value = "/ws/{action}", method = { RequestMethod.GET, RequestMethod.POST }, produces = "application/json")
+	public  Object actionMethod(@RequestParam Map<String, Object> paramMap, @PathVariable String action) {
 		
 		Map<String, Object> resultMap = new HashMap<String, Object>();
-		
+		List<Object> resultList = new ArrayList<Object>();
 		
 		if ("content".equalsIgnoreCase(action)) {
 			String sqlMapId = "board.read2";
 			resultMap = service.getObject(sqlMapId, paramMap);
 			
 		} else if("firstList".equalsIgnoreCase(action)) {
-			String sqlMapId = "board.read3";
+			String sqlMapId = "board.read3"; 
 			resultMap = service.getObject(sqlMapId, paramMap);
 		
-		} 
+		} else if ("commentList".equals(action)) {
+			resultList = service.getList("comment.list", paramMap);
+			return resultList;
+		}
 		return resultMap;
 	}
 	

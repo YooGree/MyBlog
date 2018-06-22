@@ -2,6 +2,7 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://tiles.apache.org/tags-tiles" prefix="tiles"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+
 <!-- 첫 화면 ajax -->
 <script>
 var fn_startBoard = function(url, id, params) {
@@ -17,8 +18,10 @@ var fn_startBoard = function(url, id, params) {
 			formTag += "<div class='text-center'><h2>"+data.BOARD_TITLE + "</h2></div>";
 			formTag += "<div class='row'>";
 			formTag += "<p class='col-sm-4 text-center'>"+data.BOARD_DATE+"</p>";
-			formTag += "<div class='col-sm-6'></div><div class='col-sm-2 text-center'><a>수정</a><a>삭제</a></div></div>";
-			formTag += "<hr>";
+			formTag += "<div class='col-sm-5'></div><div class='col-sm-3 text-center'>";
+			formTag += "<a href='<c:url value='/board/update?BOARD_SEQ="+data.BOARD_SEQ+"'/>'>수정&nbsp;&nbsp;&nbsp;&nbsp;</a>";
+			formTag += "<a>삭제</a>";
+			formTag += "</div></div><hr>";
 			formTag += "<div style='padding: 2%'>"+data.BOARD_CONT+"</div>";
 			
 			$('#'+id).html(formTag);
@@ -41,7 +44,6 @@ $(document).ready(
 <script>
 function list_click(seq){
 	fn_setBoard("<c:url value='/ws/content'/>", "setBoardContent",seq); 
-	fn_setComment("<c:url value='/board/commentList'/>", "setBoardComment",seq); 
 }
 
 var fn_setBoard = function(url, id, params) {
@@ -57,8 +59,10 @@ var fn_setBoard = function(url, id, params) {
 			formTag += "<div class='text-center'><h2>"+data.BOARD_TITLE + "</h2></div>";
 			formTag += "<div class='row'>";
 			formTag += "<p class='col-sm-4 text-center'>"+data.BOARD_DATE+"</p>";
-			formTag += "<div class='col-sm-6'></div><div class='col-sm-2 text-center'><a>수정</a><a>삭제</a></div></div>";
-			formTag += "<hr>";
+			formTag += "<div class='col-sm-5'></div><div class='col-sm-3 text-center'>";
+			formTag += "<a href='<c:url value='/board/update?BOARD_SEQ="+data.BOARD_SEQ+"'/>'>수정&nbsp;&nbsp;&nbsp;&nbsp;</a>";
+			formTag += "<a>삭제</a>";
+			formTag += "</div></div><hr>";
 			formTag += "<div style='padding: 2%'>"+data.BOARD_CONT+"</div>";
 			
 			$('#'+id).html(formTag);
@@ -69,12 +73,19 @@ var fn_setBoard = function(url, id, params) {
 		}
 		});
 	}
-	
+</script>
+
+<script>
+function comment_click(seq){
+	fn_setComment("<c:url value='/ws/commentList'/>", "setBoardComment",seq); 	
+}
+
 var fn_setComment= function(url, id, params) {
 	$.ajax({
 		type : "POST", 
 		url : url, 
-		data : { "BOARD_SEQ" : params }, 
+		data : { "BOARD_SEQ" : params },
+		dataType : 'json',
 		cache: false,
 		success : function(data) {
 			var formTag = "";
@@ -86,10 +97,10 @@ var fn_setComment= function(url, id, params) {
 			
 			formTag += "<div class='panel-group'>";
 			$.each(data, function(i, item){
-				fomaTag += '<div class="panel panel-default"><div class="panel-heading">';
-				fomaTag += '<span>'+item.MEMBER_NAME+'</span>';
-				fomaTag += '<span>'+item.MEMBER_DATE+'</span></div>';
-				fomaTag += '<div class="panel-body"><p>'+item.COMMENT_CON+'</p></div></div>';
+				formTag += '<div class="panel panel-default"><div class="panel-heading">';
+				formTag += '<span>'+item.MEMBER_NAME+'</span>';
+				formTag += '<span>'+item.COMMENT_DATE+'</span></div>';
+				formTag += '<div class="panel-body"><p>'+item.COMMENT_CON+'</p></div></div>';
 			});
 			formTag += "</div>";
 
@@ -104,6 +115,21 @@ var fn_setComment= function(url, id, params) {
 </script>
 <!--/ 목록 클릭 ajax -->
 
+<!-- 클릭한 BOARD_SEQ값 받아오는 js -->
+<script>
+
+	function list_click_seq(seq){
+		/* alert(seq); */
+		/* document.getElementById("#show_comment").setAttribute('name', 'gg'); */
+		$("#show_comment").attr("name",seq);
+		$("#ins_com_bo_seq").attr("value",seq);
+		$("#ins_com_bo_seq_ta").attr("placeholder",seq);
+		$("#demo_comments").collapse('hide');
+	
+	}
+
+</script>
+<!-- /클릭한 BOARD_SEQ값 받아오는 js -->
 
 
 <!-- 목록보기 collapse -->
@@ -117,7 +143,7 @@ var fn_setComment= function(url, id, params) {
 	<div id="demo" class="panel-body collapse list-group">
 		<c:forEach items="${resultList}" var="resultData" varStatus="loop">
 			<div class="${(loop.index+1)%2 == 2 ? 'odd gradeX' : 'even gradeC'}">
-				<a id="board_list${loop.index}" href="#" class="list-group-item" onclick="list_click('${resultData.BOARD_SEQ}');">
+				<a id="board_list${loop.index}" href="#" class="list-group-item" onclick="list_click('${resultData.BOARD_SEQ}'); list_click_seq('${resultData.BOARD_SEQ}');">
 					${resultData.BOARD_TITLE} 
 				<span class="badge">12</span>
 				</a>
@@ -176,8 +202,8 @@ var fn_setComment= function(url, id, params) {
 	<hr>
 	<div class="panel">
 		<div class="panel-body">
-			<button class="btn" data-toggle="collapse"
-				data-target="#demo_comments">댓글보기</button>
+			<button id="show_comment" class="btn" data-toggle="collapse" name="${resultMap.BOARD_SEQ}"
+				data-target="#demo_comments" onclick = comment_click(this.name); >댓글보기</button>
 		</div>
 
 		<!-- 댓글 목록 -->
@@ -205,9 +231,9 @@ var fn_setComment= function(url, id, params) {
 				<!-- 댓글입력 -->
 				<form action="<c:url value='/board/commentInsert' />">
 					<div class="form-group">
-							<input name="BOARD_SEQ" type="hidden" class="form-control" value="${resultMap.BOARD_SEQ }">
+							<input id="ins_com_bo_seq" name="BOARD_SEQ" type="hidden" class="form-control" value="">
 							<input name="BOARD_SEQ" type="hidden" class="form-control" value="${resultMap.BOARD_TITLE}">
-						<textarea name="COMMENT_CON" class="form-control" rows="5" id="comment">${resultMap.BOARD_SEQ }/${resultMap.BOARD_TITLE}</textarea>
+						<textarea id="ins_com_bo_seq_ta" name="COMMENT_CON" class="form-control" rows="5" id="comment" placeholder=""></textarea>
 					</div>
 					<button type="submit" class="btn btn-default btn-xs pull-right">저장</button>
 				</form>
@@ -220,19 +246,4 @@ var fn_setComment= function(url, id, params) {
 </div>
 <!--  / 게시물내용 -->
 
-<!-- pagination -->
-<div class="text-center">
-	<ul class="pagination">
-		<li class="page-item disabled"><a class="page-link" href="#">&laquo;</a>
-		</li>
-		<li class="page-item active"><a class="page-link" href="#">1</a>
-		</li>
-		<li class="page-item"><a class="page-link" href="#">2</a></li>
-		<li class="page-item"><a class="page-link" href="#">3</a></li>
-		<li class="page-item"><a class="page-link" href="#">4</a></li>
-		<li class="page-item"><a class="page-link" href="#">5</a></li>
-		<li class="page-item"><a class="page-link" href="#">&raquo;</a></li>
-	</ul>
-</div>
-<!-- / pagination -->
 

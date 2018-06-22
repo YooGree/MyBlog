@@ -43,19 +43,15 @@ public class BoardController {
 		Map<String, Object> resultMap = new HashMap<String, Object>();
 		// 데이터 여러개를 받아오면 리스트를 쓴다.
 		List<Object> resultList = new ArrayList<Object>();
-		List<Object> commentList = new ArrayList<Object>();
 		
 		// 글쓰기
 		if ("edit".equalsIgnoreCase(action)) {
 			viewName = viewName + action;
-			paramMap.put("BOARD_DATE", dateUtil.getSysdate()); // 오늘 날짜를 자동으로 만들고
-			
-		// 글읽기	
+			paramMap.put("BOARD_DATE", dateUtil.getSysdate()); // 오늘 날짜를 자동으로 만들고	
 		} else if ("list".equalsIgnoreCase(action)) {
 			viewName = viewName + action;			
 			resultList = service.getList("board.list", paramMap);
-			resultMap = service.getObject("board.read", paramMap);
-		/*	commentList = service.getList("comment.list", paramMap);*/
+			resultMap = service.getObject("board.read3", paramMap);
 		} else if ("insert".equalsIgnoreCase(action)) {
 			viewName = viewName + "list";			
 			sqlMapId = "board.insert";
@@ -69,8 +65,12 @@ public class BoardController {
 			viewName = viewName + "list";		
 			paramMap.put("COMMENT_DATE", dateUtil.getSysdate());
 			service.SaveObject("comment.insert", paramMap);
-		} else if ("commentList".equals(action)) {
-			commentList = service.getList("comment.list", paramMap);
+		} else if("update".equalsIgnoreCase(action)) {
+			viewName = viewName + action;
+			resultMap = service.getObject("board.read2", paramMap);
+		} else if("updateSubmit".equalsIgnoreCase(action)) {
+			viewName = viewName + "list";
+			service.SaveObject("board.update", paramMap);
 		}
 		
 
@@ -79,7 +79,6 @@ public class BoardController {
 		modelandView.addObject("paramMap", paramMap);
 		modelandView.addObject("resultMap", resultMap);
 		modelandView.addObject("resultList", resultList);
-		modelandView.addObject("commentList", commentList);
 
 		return modelandView;
 	}

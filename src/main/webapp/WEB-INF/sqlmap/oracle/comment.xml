@@ -15,7 +15,6 @@
 		, m.MEMBER_NAME
 		from COMMENTS c, MEMBER m
 		where c.MEMBER_SEQ = m.MEMBER_SEQ
-		and b.BOARD_SEQ = c.BOARD_SEQ
 		and c.BOARD_SEQ = ${BOARD_SEQ}
 		order by COMMENT_SEQ desc
 

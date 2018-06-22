@@ -101,6 +101,16 @@
 	</insert>
 
 	<update id="update" parameterType="Map">
+	update BOARD
+	set
+	BOARD_SEQ=#{BOARD_SEQ}
+	,BOARD_TITLE=#{BOARD_TITLE}
+	,BOARD_CONT=#{BOARD_CONT}
+	,BOARD_VIS=#{BOARD_VIS}
+	,BOARD_DATE=#{BOARD_DATE}
+	,CATEGORY_SEQ=#{CATEGORY_SEQ}
+	,MEMBER_SEQ=#{MEMBER_SEQ}
+	where BOARD_SEQ=#{BOARD_SEQ}
 	</update>
 
 	<delete id="delete" parameterType="Map">
