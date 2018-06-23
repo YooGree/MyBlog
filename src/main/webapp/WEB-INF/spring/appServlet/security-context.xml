@@ -9,6 +9,7 @@
 	<http auto-config="true" use-expressions="true">
 	
 		<intercept-url pattern="/settings/*" access="hasRole('ROLE_ADMIN')" /> 
+		<intercept-url pattern="/mypage/*" access="hasRole('ROLE_ADMIN', 'ROLE_MEMBER')" />
 		<intercept-url pattern="/*" access="permitAll()" />
 		 
 		 <!-- return boolean -->
