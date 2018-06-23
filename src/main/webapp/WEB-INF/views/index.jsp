@@ -5,8 +5,9 @@
 
 <div class="jumbotron text-center">
 	<h1>Yoo Gree's Blog</h1>
-	<p>Bootstrap is the most popular HTML, CSS, and JS framework for
-		developing responsive, mobile-first projects on the web.</p>
+	<p>Where there is a will there is a way. Carpe Diem!
+	Ability is decided by one's own effort.Faithfulness makes all
+		things possible.</p>
 </div>
 
 <!-- 베스트 사진 목록 -->

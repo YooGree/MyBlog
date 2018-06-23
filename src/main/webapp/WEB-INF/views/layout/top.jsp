@@ -20,7 +20,7 @@
 				<li><a href="<c:url value='/board/listAll'/>">Board</a></li>
 				<li><a href="<c:url value='/member/mypage?MEMBER_SEQ=${principalName}'/>">MyPage</a></li>
 				<li><a href="<c:url value='/settings/setting' />">Setting</a></li>
-				<li><a href="<c:url value='/board/search' />">Search</a></li>
+				
 
 			</ul>
 			<ul class="nav navbar-nav navbar-right">
