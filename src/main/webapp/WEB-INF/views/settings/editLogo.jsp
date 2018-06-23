@@ -4,9 +4,9 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 
-      <h1>edit logo</h1>
+      <h1>로고 바꾸기</h1>
       <div class="col-sm-8 text-left">
-				<h3>로고 변경</h3>
+				<h3>변경할 로고 입력</h3>
 				<form role="form" class="form-horizontal" method="POST" action="<c:url value='/settings/logoChange'/>">
 					<div class="form-group">
 						<div class="col-sm-10">
@@ -15,8 +15,7 @@
 					</div>
 					<div class="form-group">
 						<div class="col-sm-offset-2 col-sm-10">
-							<button type="submit" class="btn btn-default">로고변경</button>
-							<button type="button" class="btn btn-primary">취소</button>
+							<button type="submit" class="btn btn-primary">변경</button>
 						</div>
 					</div>
 				</form>
