@@ -4,11 +4,19 @@
 
 <div class="fixed_side text-center">
 	<div class="thumbnail">
-		<img src="<c:url value='/resources/image/irene.jpg' />" >
-		<p><strong>Advertising</strong></p>
+		<a href="http://70.12.115.78:8080/blog" target="_blank"> <img
+			src="<c:url value='/resources/image/girl_hat.jpg' />">
+			<p>
+				<strong>FASHION BLOGLIFE</strong>
+			</p>
+		</a>
 	</div>
 	<div class="thumbnail">
-		<img src="<c:url value='/resources/image/man2.png' />">
-		<p><strong>Advertising</strong></p>
+	<a href="http://70.12.115.78:8080/blog" target="_blank">
+		<img src="<c:url value='/resources/image/cat01.jpg' />">
+		<p>
+			<strong>ShowMeYourCats</strong>
+		</p>
+		</a>
 	</div>
 </div>

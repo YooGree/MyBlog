@@ -240,11 +240,11 @@ var fn_setComment= function(url, id, params) {
 	<div class="panel">
 		<div class="panel-body">
 			<button id="show_comment" class="btn" data-toggle="collapse" name="${resultMap.BOARD_SEQ}"
-				data-target="#setBoardComment" onclick = comment_click(this.name); >댓글보기</button>
+				data-target="#BoardComment" onclick = comment_click(this.name); >댓글보기</button>
 		</div>
 
 		<!-- 댓글 목록 -->
-		<div id="setBoardComment" class="panel-group collapse">
+		<div id="BoardComment" class="panel-group collapse">
 		<!-- 주석시작 -->
 			 <%--  <div class="panel-group">
 				<c:forEach items="${commentList}" var="resultData" varStatus="loop">
