@@ -26,9 +26,9 @@
 			</div>
 	
 		</div>
-		<div>
+		<%-- <div>
 			<tiles:insertAttribute name="layout.footer" />
-		</div>
+		</div> --%>
 
 	<!-- /#wrapper -->
 </body>

@@ -52,17 +52,19 @@ public class BoardController {
 			viewName = viewName + action;			
 			resultList = service.getList("board.list", paramMap);
 			resultMap = service.getObject("board.read3", paramMap);
+			
 		} else if ("insert".equalsIgnoreCase(action)) {
-			viewName = viewName + "list";			
+			viewName = "redirect:/board/list";			
 			sqlMapId = "board.insert";
 			service.SaveObject(sqlMapId, paramMap);
+			
 		} else if("read".equalsIgnoreCase(action)) {
 			viewName = viewName + "list";			
 			resultMap = service.getObject("board.read", paramMap);
 		} else if("search".equalsIgnoreCase(action)){
 			viewName = viewName + action;
 		} else if ("commentInsert".equalsIgnoreCase(action)) {
-			viewName = viewName + "list";		
+			viewName = "redirect:/board/list";		
 			paramMap.put("COMMENT_DATE", dateUtil.getSysdate());
 			service.SaveObject("comment.insert", paramMap);
 		} else if("update".equalsIgnoreCase(action)) {
@@ -71,6 +73,9 @@ public class BoardController {
 		} else if("updateSubmit".equalsIgnoreCase(action)) {
 			viewName = viewName + "list";
 			service.SaveObject("board.update", paramMap);
+		} else if("delete".equalsIgnoreCase(action)) {
+			viewName = "redirect:/board/list";			
+			service.SaveObject("board.delete", paramMap);
 		}
 		
 

@@ -69,23 +69,7 @@
 		</div>
 		<!-- /첨부파일 -->
 		
-		<!-- 공개여부 -->
-		<div class="form-group">
-			<label for="exampleSelect1">공개여부 설정</label>
-			<div class="form-check">
-				<label class="form-check-label"> <input type="radio"
-					class="form-check-input" name="BOARD_VIS" id="optionsRadios1"
-					value="T" checked> 전체공개
-				</label>
-			</div>
-			<div class="form-check">
-				<label class="form-check-label"> <input type="radio"
-					class="form-check-input" name="BOARD_VIS" id="optionsRadios2"
-					value="F"> 비공개
-				</label>
-			</div>
-		</div>
-		<!-- /공개여부 -->
+
 
 		<button type="submit" class="btn btn-primary">저장</button>
 

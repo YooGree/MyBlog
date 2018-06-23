@@ -4,6 +4,16 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <script src="https://cdn.ckeditor.com/4.9.2/standard/ckeditor.js"></script>
 
+<!-- 셀렉트 박스 자동 설정  -->
+<script type="text/javascript">
+
+
+
+
+</script>
+
+
+
 <div class="panel panel-default" style="padding: 2%;">
 	<form style="margin: 2%;" role="form" class="form-horizontal"
 		method="POST" action="<c:url value='/board/updateSubmit' />">
@@ -44,10 +54,10 @@
 		<!-- 카테고리 -->
 		<div class="form-group">
 			<label for="exampleSelect1">카테고리 선택</label> 
-			<select	name="CATEGORY_SEQ" class="form-control" id="exampleSelect1" >
-				<option value="1">Daily</option>
-				<option value="2">Food</option>
-				<option value="3">Friends</option>
+			<select	name="CATEGORY_SEQ" class="form-control" id="categorySelect" >
+				<option class="cate_option" value="1">Daily</option>
+				<option class="cate_option" value="2">Food</option>
+				<option class="cate_option" value="3">Friends</option>
 			</select>
 		</div>
 		<!-- /카테고리 -->
@@ -69,23 +79,7 @@
 		</div>
 		<!-- /첨부파일 -->
 		
-		<!-- 공개여부 -->
-		<div class="form-group">
-			<label for="exampleSelect1">공개여부 설정</label>
-			<div class="form-check">
-				<label class="form-check-label"> <input type="radio"
-					class="form-check-input" name="BOARD_VIS" id="optionsRadios1"
-					value="T" checked> 전체공개
-				</label>
-			</div>
-			<div class="form-check">
-				<label class="form-check-label"> <input type="radio"
-					class="form-check-input" name="BOARD_VIS" id="optionsRadios2"
-					value="F"> 비공개
-				</label>
-			</div>
-		</div>
-		<!-- /공개여부 -->
+
 
 		<button type="submit" class="btn btn-primary">저장</button>
 

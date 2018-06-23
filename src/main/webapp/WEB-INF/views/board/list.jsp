@@ -9,7 +9,7 @@ var fn_startBoard = function(url, id, params) {
 	$.ajax({
 		type : "POST", 
 		url : url, 
-		data : params, 
+		data : {"CATEGORY_SEQ" : params}, 
 		cache: false,
 		success : function(data) {
 			var formTag = "";
@@ -20,7 +20,7 @@ var fn_startBoard = function(url, id, params) {
 			formTag += "<p class='col-sm-4 text-center'>"+data.BOARD_DATE+"</p>";
 			formTag += "<div class='col-sm-5'></div><div class='col-sm-3 text-center'>";
 			formTag += "<a href='<c:url value='/board/update?BOARD_SEQ="+data.BOARD_SEQ+"'/>'>수정&nbsp;&nbsp;&nbsp;&nbsp;</a>";
-			formTag += "<a>삭제</a>";
+			formTag += "<a href='<c:url value='/board/delete?BOARD_SEQ="+data.BOARD_SEQ+"'/>'>삭제</a>";
 			formTag += "</div></div><hr>";
 			formTag += "<div style='padding: 2%'>"+data.BOARD_CONT+"</div>";
 			
@@ -35,7 +35,7 @@ var fn_startBoard = function(url, id, params) {
 
 $(document).ready(
 			function() {
-				fn_startBoard("<c:url value='/ws/firstList'/>", "setBoardContent");
+				fn_startBoard("<c:url value='/ws/firstList'/>", "setBoardContent", "${paramMap.CATEGORY_SEQ}");
 			});
 </script>
 <!-- /첫 화면 ajax -->
@@ -61,7 +61,7 @@ var fn_setBoard = function(url, id, params) {
 			formTag += "<p class='col-sm-4 text-center'>"+data.BOARD_DATE+"</p>";
 			formTag += "<div class='col-sm-5'></div><div class='col-sm-3 text-center'>";
 			formTag += "<a href='<c:url value='/board/update?BOARD_SEQ="+data.BOARD_SEQ+"'/>'>수정&nbsp;&nbsp;&nbsp;&nbsp;</a>";
-			formTag += "<a>삭제</a>";
+			formTag += "<a href='<c:url value='/board/delete?BOARD_SEQ="+data.BOARD_SEQ+"'/>'>삭제</a>";
 			formTag += "</div></div><hr>";
 			formTag += "<div style='padding: 2%'>"+data.BOARD_CONT+"</div>";
 			
@@ -135,7 +135,7 @@ var fn_setComment= function(url, id, params) {
 <!-- 목록보기 collapse -->
 <div class="nav panel panel-default">
 	<div class="panel-body">
-		<h5 class="col-sm-10">${resultMap.CATEGORY_NAME}</h5>	
+		<h5 class="col-sm-10">${paramMap.CATEGORY_NAME}</h5>	
 		<button id="cate_names" type="button" class="btn col-sm-2"
 			data-toggle="collapse" data-target="#demo">목록보기</button>
 	</div>
@@ -231,7 +231,7 @@ var fn_setComment= function(url, id, params) {
 				<!-- 댓글입력 -->
 				<form action="<c:url value='/board/commentInsert' />">
 					<div class="form-group">
-							<input id="ins_com_bo_seq" name="BOARD_SEQ" type="hidden" class="form-control" value="">
+							<input id="ins_com_bo_seq" name="BOARD_SEQ" type="hidden" class="form-control" value="${resultMap.BOARD_SEQ}">
 							<input name="BOARD_SEQ" type="hidden" class="form-control" value="${resultMap.BOARD_TITLE}">
 						<textarea id="ins_com_bo_seq_ta" name="COMMENT_CON" class="form-control" rows="5" id="comment" placeholder=""></textarea>
 					</div>

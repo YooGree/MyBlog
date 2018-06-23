@@ -15,6 +15,9 @@
 		, CATEGORY_SEQ
 		, MEMBER_SEQ
 		from BOARD
+		where board_flag = 'T'
+		and
+		CATEGORY_SEQ=#{CATEGORY_SEQ}
 		order by BOARD_SEQ desc
 	</select>
 	
@@ -33,6 +36,7 @@
 		
 		where 
 		b.CATEGORY_SEQ = c.CATEGORY_SEQ
+		b.board_flag = 'T'
 		and
 		b.BOARD_TITLE = '테스트'
 		
@@ -52,6 +56,8 @@
 		
 		where 
 		b.CATEGORY_SEQ = c.CATEGORY_SEQ
+		and 
+		b.board_flag = 'T'
 		and
 		b.BOARD_SEQ = #{BOARD_SEQ}
 		
@@ -65,14 +71,9 @@
 		, b.BOARD_DATE
 		, b.CATEGORY_SEQ
 		, b.MEMBER_SEQ
-		, c.CATEGORY_NAME
-		
-		from BOARD b, CATEGORY c
-		
+		from BOARD b
 		where 
-		b.CATEGORY_SEQ = c.CATEGORY_SEQ
-		and
-		b.BOARD_SEQ = (select max(BOARD_SEQ) from BOARD)
+		b.BOARD_SEQ = (select max(BOARD_SEQ) from BOARD where BOARD_FLAG = 'T' and CATEGORY_SEQ = #{CATEGORY_SEQ})
 		
 	</select>
 	<insert id="merge" parameterType="Map">
@@ -87,15 +88,17 @@
 		, BOARD_DATE
 		, CATEGORY_SEQ
 		, MEMBER_SEQ
+		, BOARD_FLAG
 		)
 		values(
 		BO_SEQ.nextval
 		, #{BOARD_TITLE}
 		, #{BOARD_CONT}
-		, #{BOARD_VIS}
+		, 'T'
 		, #{BOARD_DATE}
 		, #{CATEGORY_SEQ}
 		, #{MEMBER_SEQ}
+		, 'T'
 		)
 
 	</insert>
@@ -106,13 +109,16 @@
 	BOARD_SEQ=#{BOARD_SEQ}
 	,BOARD_TITLE=#{BOARD_TITLE}
 	,BOARD_CONT=#{BOARD_CONT}
-	,BOARD_VIS=#{BOARD_VIS}
+	,BOARD_VIS='T'
 	,BOARD_DATE=#{BOARD_DATE}
 	,CATEGORY_SEQ=#{CATEGORY_SEQ}
 	,MEMBER_SEQ=#{MEMBER_SEQ}
 	where BOARD_SEQ=#{BOARD_SEQ}
 	</update>
 
-	<delete id="delete" parameterType="Map">
-	</delete>
+	<update id="delete" parameterType="Map">
+		UPDATE BOARD 
+		SET BOARD_FLAG='F' 
+		WHERE BOARD_SEQ = #{BOARD_SEQ}
+	</update>
 </mapper>
