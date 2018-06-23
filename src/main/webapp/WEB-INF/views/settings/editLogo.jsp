@@ -2,26 +2,21 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://tiles.apache.org/tags-tiles" prefix="tiles"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 
-
-  
-
-    
       <h1>edit logo</h1>
       <div class="col-sm-8 text-left">
-				<h3>ë³ê²½í  ë¡ê³ ëª ìë ¥</h3>
-				<form class="form-horizontal" action="/action_page.php">
-
+				<h3>로고 변경</h3>
+				<form role="form" class="form-horizontal" method="POST" action="<c:url value='/settings/logoChange'/>">
 					<div class="form-group">
-					
 						<div class="col-sm-10">
-							<input type="text" class="form-control" id="logo" placeholder="íì¬ ë¡ê³ ëª" name="loge">
+							<input type="text" class="form-control" name="LOGO_NAME">
 						</div>
 					</div>
 					<div class="form-group">
 						<div class="col-sm-offset-2 col-sm-10">
-							<button type="button" class="btn btn-default" >ë¯¸ë¦¬ë³´ê¸°</button>
-							<button type="button" class="btn btn-primary" >ë³ê²½</button>
+							<button type="submit" class="btn btn-default">로고변경</button>
+							<button type="button" class="btn btn-primary">취소</button>
 						</div>
 					</div>
 				</form>

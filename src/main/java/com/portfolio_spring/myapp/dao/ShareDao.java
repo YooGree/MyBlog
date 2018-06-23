@@ -28,6 +28,11 @@ public class ShareDao {
 		return result;
 	}
 	
+	public String getThema(String sqlMapId, Object dataMap) {
+		String result = sqlSession.selectOne(sqlMapId, dataMap);
+		return result;
+	}
+	
 	public Object getSeq(String sqlMapId, Object dataMap) {
 		Object result = sqlSession.selectOne(sqlMapId, dataMap);
 		return result;
