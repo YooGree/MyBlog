@@ -31,19 +31,13 @@ public class MemberService {
 	// 회원 가입 
 	public void SaveObject(Map<String, Object> dataMap) {
 		
-		// 회원 가입(권한 아직 안넣음)
+		// 회원 가입
 		sqlMapId = "user.insert";
 		dao.SaveObject(sqlMapId, dataMap);
-		
-//		// 회원 시퀀스 가져오기
-//		sqlMapId = "user.seq";
-//		Object result = dao.getSeq(sqlMapId, dataMap);
-//		dataMap.put("MEMBER_SEQ", result);
-//		System.out.println(dataMap.get("MEMBER_SEQ"));
 	
-//		// 권한 부여
-//		sqlMapId = "user.authority";
-//		dao.SaveObject(sqlMapId, dataMap);
+		// 권한 부여
+		sqlMapId = "user.authority";
+		dao.SaveObject(sqlMapId, dataMap);
 	}
 	
 	// 회원 업데이트

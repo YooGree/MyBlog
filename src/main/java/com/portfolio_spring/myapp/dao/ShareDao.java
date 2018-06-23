@@ -28,29 +28,30 @@ public class ShareDao {
 		return result;
 	}
 	
+	public String getLogo(String sqlMapId, Object dataMap) {
+		String result = sqlSession.selectOne(sqlMapId, dataMap);
+		return result;
+	}
+	
 	public String getThema(String sqlMapId, Object dataMap) {
 		String result = sqlSession.selectOne(sqlMapId, dataMap);
 		return result;
 	}
 	
-	public Object getSeq(String sqlMapId, Object dataMap) {
-		Object result = sqlSession.selectOne(sqlMapId, dataMap);
+	public String getSeq(String sqlMapId, Object dataMap) {
+		String result = sqlSession.selectOne(sqlMapId, dataMap);
 		return result;
 	}
 	
 	public void SaveObject(String sqlMapId, Object dataMap) {
-		
 		sqlSession.insert(sqlMapId, dataMap);
-
 	}
 	
 	public void UpdateObject(String sqlMapId, Object dataMap) {
-		
 		sqlSession.update(sqlMapId, dataMap);
 	}
 	
 	public void DeleteObject(String sqlMapId, Object dataMap) {
-		
 		sqlSession.delete(sqlMapId, dataMap);
 	}
 	

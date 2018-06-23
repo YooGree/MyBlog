@@ -30,7 +30,8 @@ public class SettingController {
 	public ModelAndView actionMethod(@RequestParam Map<String, Object> paramMap, @PathVariable String action, ModelAndView modelandView) {
 		
 		String viewName = "/settings/";
-		String sqlMapId; // sqlmap에 날릴 쿼리문 정의
+		String logo = "";
+		String thema = "";
 
 		Map<String, Object> resultMap = new HashMap<String, Object>();
 		List<Object> resultList = new ArrayList<Object>();
@@ -39,19 +40,22 @@ public class SettingController {
 			viewName = viewName+"setting";	
 		} else if ("thema".equalsIgnoreCase(action)) {
 			viewName = viewName+"editTheme";
-		} else if ("category".equalsIgnoreCase(action)) {
-			viewName = viewName+"editCate";
+		} else if ("themaChange".equalsIgnoreCase(action)) {
+			viewName = viewName+"editTheme";
+			paramMap.put("THEMA_SEQ", commonUtil.getUniqueSequence());
+			thema = service.getThema(paramMap);
 		} else if ("logo".equalsIgnoreCase(action)) {
 			viewName = viewName+"editLogo";
 		} else if ("logoChange".equalsIgnoreCase(action)) {
-			viewName = viewName+"editLogo";
+			viewName = "/settings/editLogo";
 			paramMap.put("LOGO_SEQ", commonUtil.getUniqueSequence());
-			String color = service.getThema(paramMap);
-			System.out.println(color);
+			logo = service.getLogo(paramMap);
 		}
 
 		modelandView.setViewName(viewName);
-
+		
+		modelandView.addObject("thema", thema);
+		modelandView.addObject("logo", logo);
 		modelandView.addObject("paramMap", paramMap);
 		modelandView.addObject("resultMap", resultMap);
 		modelandView.addObject("resultList", resultList);

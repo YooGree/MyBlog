@@ -3,7 +3,7 @@
 <%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 
 <!-- navbar top -->
-<nav class="navbar navbar-inverse navbar-fixed-top">
+<nav class="navbar navbar-inverse navbar-fixed-top" style="background-color:${thema}">
 	<div id="navbar_container" class="container-fluid">
 		<div class="navbar-header">
 			<button type="button" class="navbar-toggle" data-toggle="collapse"
@@ -11,7 +11,7 @@
 				<span class="icon-bar"></span> <span class="icon-bar"></span> <span
 					class="icon-bar"></span>
 			</button>
-			<a class="navbar-brand" href="<c:url value='/' />">Logo</a>
+			<a class="navbar-brand" href="<c:url value='/' />">${logo}</a>
 		</div>
 		<div class="collapse navbar-collapse" id="myNavbar">
 			<c:set var="principalName" value="${pageContext.request.userPrincipal.name}"/>

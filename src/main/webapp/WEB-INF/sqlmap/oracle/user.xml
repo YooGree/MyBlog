@@ -15,12 +15,6 @@
 		from MEMBER
 		where MEMBER_SEQ = #{MEMBER_SEQ}
 	</select>
-	
-<!--   	<select id="seq" resultType="Integer" parameterMap="Map">
-		select MEMBER_SEQ
-		from MEMBER
-		where MEMBER_ID = #{MEMBER_ID}
-	</select>  -->
 		
 	<insert id="insert" parameterType="Map">
 		insert into MEMBER(
@@ -32,7 +26,7 @@
 		MEMBER_BIRTH, 
 		MEMBER_RESI,
 		HOBBY_SEQ) values (
-		MEM_SEQ.NEXTVAL,
+		#{MEMBER_SEQ},
 		#{MEMBER_ID},
 		#{MEMBER_NAME},
 		#{MEMBER_PW},
@@ -42,14 +36,13 @@
 		#{HOBBY_SEQ})
 	</insert>
 	
-<!-- 	<insert id="authority" parameterMap="Map">
+ 	<insert id="authority" parameterType="Map">
 		insert into MEM_AUT_REL(
 		AUT_SEQ,
 		MEMBER_SEQ) values (
 		#{AUT_SEQ},
-		#{MEMBER_SEQ}
-		)
-	</insert> -->
+		#{MEMBER_SEQ})
+	</insert>
 	
 	<update id="update" parameterType="Map">
 		update MEMBER

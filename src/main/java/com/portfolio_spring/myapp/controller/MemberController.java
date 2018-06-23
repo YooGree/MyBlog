@@ -22,6 +22,9 @@ public class MemberController {
 	@Autowired
 	private MemberService service;
 	
+	@Autowired
+	private CommonUtil commonUtil;
+	
 	// RequestMapping를 이용하여 매핑값, 데이터 전송 방식을 물려받음, 이후 RequestParam을 이용하여 넘어오는 데이터를 받고, modelanView 생성
 	@RequestMapping(value = "/member/{action}", method = {RequestMethod.GET, RequestMethod.POST})
 	public ModelAndView actionMethod(@RequestParam Map<String, Object> paramMap, @PathVariable String action, ModelAndView modelandView) {
@@ -35,6 +38,7 @@ public class MemberController {
 			viewName = viewName+"signup";	
 		} else if ("insert".equalsIgnoreCase(action)) {
 			viewName = viewName+"login";
+			paramMap.put("MEMBER_SEQ", commonUtil.getUniqueSequence());
 			service.SaveObject(paramMap);
 		} else if ("mypage".equalsIgnoreCase(action)) {
 			viewName = "/mypage/mypage";
