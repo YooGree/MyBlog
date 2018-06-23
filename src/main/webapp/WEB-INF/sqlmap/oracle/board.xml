@@ -7,22 +7,43 @@
 <mapper namespace="board">
 	<select id="list" resultType="Map" parameterType="Map">
 	select
-		BOARD_SEQ
-		, BOARD_TITLE
-		, BOARD_CONT
-		, BOARD_VIS
-		, BOARD_DATE
-		, CATEGORY_SEQ
-		, MEMBER_SEQ
-		from BOARD
-		where board_flag = 'T'
+		b.BOARD_SEQ
+		, b.BOARD_TITLE
+		, b.BOARD_CONT
+		, b.BOARD_VIS
+		, b.BOARD_DATE
+		, b.CATEGORY_SEQ
+		, b.MEMBER_SEQ
+		, c.CATEGORY_NAME
+		from BOARD b, CATEGORY c 
+		where b.CATEGORY_SEQ = c.CATEGORY_SEQ
+		and b.board_flag = 'T'
 		and
-		CATEGORY_SEQ=#{CATEGORY_SEQ}
+		b.CATEGORY_SEQ=#{CATEGORY_SEQ}
 		order by BOARD_SEQ desc
 	</select>
 	
+	<select id="list2" resultType="Map" parameterType="Map">
+	select
+		b.BOARD_SEQ
+		, b.BOARD_TITLE
+		, b.BOARD_CONT
+		, b.BOARD_VIS
+		, b.BOARD_DATE
+		, b.CATEGORY_SEQ
+		, b.MEMBER_SEQ	
+		, c.CATEGORY_NAME
+		
+		from BOARD b, CATEGORY c 
+		where b.CATEGORY_SEQ = c.CATEGORY_SEQ
+		and
+		b.board_flag = 'T'
+		order by BOARD_SEQ desc
+	</select>
+	
+	
 	<select id="read" resultType="Map" parameterType="Map">
-		select
+	select
 		b.BOARD_SEQ
 		, b.BOARD_TITLE
 		, b.BOARD_CONT
@@ -36,9 +57,8 @@
 		
 		where 
 		b.CATEGORY_SEQ = c.CATEGORY_SEQ
-		b.board_flag = 'T'
 		and
-		b.BOARD_TITLE = '테스트'
+		b.BOARD_SEQ = (select max(BOARD_SEQ) from BOARD where BOARD_FLAG = 'T')
 		
 	</select>
 	<select id="read2" resultType="Map" parameterType="Map">
@@ -71,8 +91,13 @@
 		, b.BOARD_DATE
 		, b.CATEGORY_SEQ
 		, b.MEMBER_SEQ
-		from BOARD b
+		, c.CATEGORY_NAME
+		
+		from BOARD b, CATEGORY c
+		
 		where 
+		b.CATEGORY_SEQ = c.CATEGORY_SEQ
+		and 		
 		b.BOARD_SEQ = (select max(BOARD_SEQ) from BOARD where BOARD_FLAG = 'T' and CATEGORY_SEQ = #{CATEGORY_SEQ})
 		
 	</select>

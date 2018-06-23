@@ -2,10 +2,46 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://tiles.apache.org/tags-tiles" prefix="tiles"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-
 <!-- 첫 화면 ajax -->
-<script>
+<!-- <script>
 var fn_startBoard = function(url, id, params) {
+	$.ajax({
+		type : "POST", 
+		url : url, 
+		data : params,
+		cache: false,
+		success : function(data) {
+			var formTag = "";
+			
+			formTag += "<div class='text-center'><h5>"+data.CATEGORY_NAME + "</h5></div>";
+			formTag += "<div class='text-center'><h2>"+data.BOARD_TITLE + "</h2></div>";
+			formTag += "<div class='row'>";
+			formTag += "<p class='col-sm-4 text-center'>"+data.BOARD_DATE+"</p>";
+			formTag += "<div class='col-sm-5'></div><div class='col-sm-3 text-center'>";
+			formTag += "<a href='<c:url value='/board/update?BOARD_SEQ="+data.BOARD_SEQ+"'/>'>수정&nbsp;&nbsp;&nbsp;&nbsp;</a>";
+			formTag += "<a href='<c:url value='/board/delete?BOARD_SEQ="+data.BOARD_SEQ+"'/>'>삭제</a>";
+			formTag += "</div></div><hr>";
+			formTag += "<div style='padding: 2%'>"+data.BOARD_CONT+"</div>";
+			
+			$('#'+id).html(formTag);
+		}, 
+		error : function(xhr, status, exception){
+			alert("Failure \n ("+status+")");
+			return false; 
+		}
+		});
+	}
+
+$(document).ready(
+			function() {
+				fn_startBoard("<c:url value='/ws/firstList'/>", "setBoardContent");
+			});
+</script> -->
+<!-- /첫 화면 ajax -->
+
+<!-- 카테고리별 첫 화면 ajax -->
+<script>
+var fn_cate_startBoard = function(url, id, params) {
 	$.ajax({
 		type : "POST", 
 		url : url, 
@@ -35,10 +71,10 @@ var fn_startBoard = function(url, id, params) {
 
 $(document).ready(
 			function() {
-				fn_startBoard("<c:url value='/ws/firstList'/>", "setBoardContent", "${paramMap.CATEGORY_SEQ}");
+				fn_cate_startBoard("<c:url value='/ws/firstCateList'/>", "setBoardContent", "${paramMap.CATEGORY_SEQ}");
 			});
 </script>
-<!-- /첫 화면 ajax -->
+<!-- /카테고리별 첫 화면 ajax -->
 
 <!-- 목록 클릭 ajax -->
 <script>
@@ -173,29 +209,30 @@ var fn_setComment= function(url, id, params) {
 <!--  게시물내용 -->
 <div id="board_content" class="panel panel-default">
 
-	<%-- 	<div class="text-center">
-		<h5>${resultMap.CATEGORY_NAME }</h5>
-	</div>
-
-	<div class="text-center">
-		<h2>${resultMap.BOARD_TITLE}</h2>
-	</div>
-
-	<div class="row">
-		
-		<p class="col-sm-4 text-center">${resultMap.BOARD_DATE}</p>
-		<div class="col-sm-6"></div>
-		<div class="col-sm-2 text-center">
-			<a>수정</a> <a>삭제</a>
+<!-- 주석시작 -->
+	<div id="setBoardContent">
+		<div class="text-center">
+			<h5>${resultMap.CATEGORY_NAME }</h5>
 		</div>
-	</div> 
-	 
-	<hr>
-	<div class="well">
-		${resultMap.BOARD_CONT}
-	</div>--%>
-	
-	<div id="setBoardContent"></div>
+
+		<div class="text-center">
+			<h2>${resultMap.BOARD_TITLE}</h2>
+		</div>
+
+		<div class="row">
+
+			<p class="col-sm-4 text-center">${resultMap.BOARD_DATE}</p>
+			<div class="col-sm-6"></div>
+			<div class="col-sm-2 text-center">
+				<a>수정</a> <a>삭제</a>
+			</div>
+		</div>
+
+		<hr>
+		<div class="well">${resultMap.BOARD_CONT}</div>
+	</div>
+	<!-- 주석끝 -->
+<!-- 	<div id="setBoardContent"></div> -->
 
 
 	<!-- 댓글 collapse-->
@@ -203,12 +240,13 @@ var fn_setComment= function(url, id, params) {
 	<div class="panel">
 		<div class="panel-body">
 			<button id="show_comment" class="btn" data-toggle="collapse" name="${resultMap.BOARD_SEQ}"
-				data-target="#demo_comments" onclick = comment_click(this.name); >댓글보기</button>
+				data-target="#setBoardComment" onclick = comment_click(this.name); >댓글보기</button>
 		</div>
 
 		<!-- 댓글 목록 -->
-		<div id="demo_comments" class="panel-group collapse">
-			<%-- <div class="panel-group">
+		<div id="setBoardComment" class="panel-group collapse">
+		<!-- 주석시작 -->
+			 <%--  <div class="panel-group">
 				<c:forEach items="${commentList}" var="resultData" varStatus="loop">
 					<div class="${(loop.index+1)%2 == 2 ? 'odd gradeX' : 'even gradeC'}">
 						<div class="panel panel-default">
@@ -222,8 +260,9 @@ var fn_setComment= function(url, id, params) {
 						</div>
 					</div>
 				</c:forEach>
-			</div> --%>
-			<div id="setBoardComment"></div>
+			</div>   --%>
+			<!-- 주석끝 -->
+			  <div id="setBoardComment"></div>  
 				<!-- /댓글 목록 -->
 
 				<hr>

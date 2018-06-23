@@ -53,6 +53,10 @@ public class BoardController {
 			resultList = service.getList("board.list", paramMap);
 			resultMap = service.getObject("board.read3", paramMap);
 			
+		} else if("listAll".equalsIgnoreCase(action)) { 
+			viewName = viewName + "list";
+			resultList = service.getList("board.list2", paramMap);
+			resultMap = service.getObject("board.read", paramMap);
 		} else if ("insert".equalsIgnoreCase(action)) {
 			viewName = "redirect:/board/list";			
 			sqlMapId = "board.insert";

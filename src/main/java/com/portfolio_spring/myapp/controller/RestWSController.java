@@ -32,14 +32,19 @@ public class RestWSController {
 			String sqlMapId = "board.read2";
 			resultMap = service.getObject(sqlMapId, paramMap);
 			
-		} else if("firstList".equalsIgnoreCase(action)) {
+		} else if("firstCateList".equalsIgnoreCase(action)) {
 			String sqlMapId = "board.read3"; 
 			resultMap = service.getObject(sqlMapId, paramMap);
 		
+		}else if ("firstList".equalsIgnoreCase(action)) {
+			resultMap = service.getObject("board.read", paramMap);
+			resultList = service.getList("board.list2", paramMap);
+			
+			
 		} else if ("commentList".equals(action)) {
 			resultList = service.getList("comment.list", paramMap);
 			return resultList;
-		}
+		} 
 		return resultMap;
 	}
 	
