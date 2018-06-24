@@ -54,7 +54,6 @@
 		, c.CATEGORY_NAME
 		
 		from BOARD b, CATEGORY c
-		
 		where 
 		b.CATEGORY_SEQ = c.CATEGORY_SEQ
 		and

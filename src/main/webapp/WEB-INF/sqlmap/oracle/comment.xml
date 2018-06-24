@@ -19,6 +19,18 @@
 		order by COMMENT_SEQ desc
 
 	</select>
+	
+	<select id="countList" resultType="Map" parameterType="Map">
+	SELECT COUNT(comment_seq) AS COUNT, BOARD_SEQ
+        FROM COMMENTS 
+        GROUP BY BOARD_SEQ
+	</select>
+	
+	<select id="countOne" resultType="Map" parameterType="Map">
+	SELECT COUNT(comment_seq) AS COUNT
+        FROM COMMENTS 
+        WHERE BOARD_SEQ = #{BOARD_SEQ}
+	</select>
 
 	<insert id="merge" parameterType="Map">
 	</insert>

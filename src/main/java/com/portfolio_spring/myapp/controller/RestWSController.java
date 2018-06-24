@@ -25,6 +25,7 @@ public class RestWSController {
 	@RequestMapping(value = "/ws/{action}", method = { RequestMethod.GET, RequestMethod.POST }, produces = "application/json")
 	public  Object actionMethod(@RequestParam Map<String, Object> paramMap, @PathVariable String action) {
 		
+		
 		Map<String, Object> resultMap = new HashMap<String, Object>();
 		List<Object> resultList = new ArrayList<Object>();
 		
@@ -37,10 +38,8 @@ public class RestWSController {
 			resultMap = service.getObject(sqlMapId, paramMap);
 		
 		}else if ("firstList".equalsIgnoreCase(action)) {
-			resultMap = service.getObject("board.read", paramMap);
 			resultList = service.getList("board.list2", paramMap);
-			
-			
+			resultMap = service.getObject("board.read", paramMap);
 		} else if ("commentList".equals(action)) {
 			resultList = service.getList("comment.list", paramMap);
 			return resultList;

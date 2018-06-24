@@ -41,6 +41,7 @@ public class BoardController {
 		
 		// 데이터 한개를 받아오면 맵을 쓰고
 		Map<String, Object> resultMap = new HashMap<String, Object>();
+		Map<String, Object> resultComMap = new HashMap<String, Object>();
 		// 데이터 여러개를 받아오면 리스트를 쓴다.
 		List<Object> resultList = new ArrayList<Object>();
 		
@@ -57,6 +58,9 @@ public class BoardController {
 			viewName = viewName + "list";
 			resultList = service.getList("board.list2", paramMap);
 			resultMap = service.getObject("board.read", paramMap);
+//			resultComMap = service.getObject("comment.countList", paramMap);
+			
+			
 		} else if ("insert".equalsIgnoreCase(action)) {
 			viewName = "redirect:/board/listAll";			
 			sqlMapId = "board.insert";
@@ -88,6 +92,7 @@ public class BoardController {
 		modelandView.addObject("paramMap", paramMap);
 		modelandView.addObject("resultMap", resultMap);
 		modelandView.addObject("resultList", resultList);
+//		modelandView.addObject("resultComMap", resultComMap);
 
 		return modelandView;
 	}

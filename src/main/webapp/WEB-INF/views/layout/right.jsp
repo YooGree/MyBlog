@@ -3,6 +3,7 @@
 
 
 <div class="fixed_side text-center">
+<p>ADs</p>
 	<div class="thumbnail">
 		<a href="http://70.12.115.78:8080/blog" target="_blank"> <img
 			src="<c:url value='/resources/image/girl_hat.jpg' />">

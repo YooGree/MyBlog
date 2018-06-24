@@ -60,14 +60,14 @@
 		</div>
 		<!-- /내용 -->
 
-		<!-- 첨부파일 -->
+		<!-- 첨부파일
 		<div class="form-group">
 			<label for="exampleInputFile">첨부파일 선택</label> <input type="file"
 				class="form-control-file" id="exampleInputFile"
 				aria-describedby="fileHelp"> <small id="fileHelp"
 				class="form-text text-muted"></small>
 		</div>
-		<!-- /첨부파일 -->
+		/첨부파일 -->
 		
 
 

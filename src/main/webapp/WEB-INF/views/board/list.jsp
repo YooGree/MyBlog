@@ -3,13 +3,15 @@
 <%@ taglib uri="http://tiles.apache.org/tags-tiles" prefix="tiles"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!-- 첫 화면 ajax -->
-<!-- <script>
+ <script>
 var fn_startBoard = function(url, id, params) {
 	$.ajax({
 		type : "POST", 
 		url : url, 
 		data : params,
+		dataType : 'json',
 		cache: false,
+		async : false,
 		success : function(data) {
 			var formTag = "";
 			
@@ -35,8 +37,12 @@ var fn_startBoard = function(url, id, params) {
 $(document).ready(
 			function() {
 				fn_startBoard("<c:url value='/ws/firstList'/>", "setBoardContent");
-			});
-</script> -->
+			}); 
+/* $(window).load(
+			function() {
+				fn_startBoard("<c:url value='/ws/firstList'/>", "setBoardContent");
+			}); */
+</script> 
 <!-- /첫 화면 ajax -->
 
 <!-- 카테고리별 첫 화면 ajax -->
@@ -68,10 +74,17 @@ var fn_cate_startBoard = function(url, id, params) {
 		}
 		});
 	}
+/* $(document).ready(function(){
+    $(".left_cate").click(function(){
+       fn_cate_startBoard("<c:url value='/ws/firstCateList'/>", "setBoardContent", "${paramMap.CATEGORY_SEQ}");
+    });
+});
+ */
 
-$(document).ready(
+	$(document).ready(
 			function() {
-				fn_cate_startBoard("<c:url value='/ws/firstCateList'/>", "setBoardContent", "${paramMap.CATEGORY_SEQ}");
+				fn_cate_startBoard("<c:url value='/ws/firstCateList'/>",
+						"setBoardContent", "${paramMap.CATEGORY_SEQ}");
 			});
 </script>
 <!-- /카테고리별 첫 화면 ajax -->
@@ -110,7 +123,7 @@ var fn_setBoard = function(url, id, params) {
 		});
 	}
 </script>
-
+<!-- 댓글목록 생성 -->
 <script>
 function comment_click(seq){
 	fn_setComment("<c:url value='/ws/commentList'/>", "setBoardComment",seq); 	
@@ -134,7 +147,7 @@ var fn_setComment= function(url, id, params) {
 			formTag += "<div class='panel-group'>";
 			$.each(data, function(i, item){
 				formTag += '<div class="panel panel-default"><div class="panel-heading">';
-				formTag += '<span>'+item.MEMBER_NAME+'</span>';
+				formTag += '<span>'+item.MEMBER_NAME+'&nbsp;&nbsp;&nbsp;</span>';
 				formTag += '<span>'+item.COMMENT_DATE+'</span></div>';
 				formTag += '<div class="panel-body"><p>'+item.COMMENT_CON+'</p></div></div>';
 			});
@@ -181,7 +194,8 @@ var fn_setComment= function(url, id, params) {
 			<div class="${(loop.index+1)%2 == 2 ? 'odd gradeX' : 'even gradeC'}">
 				<a id="board_list${loop.index}" href="#" class="list-group-item" onclick="list_click('${resultData.BOARD_SEQ}'); list_click_seq('${resultData.BOARD_SEQ}');">
 					${resultData.BOARD_TITLE} 
-				<span class="badge">12</span>
+				<%-- <span class="badge"> ${resultComMap.COUNT[loop.index]}  </span>--%>
+				<span class="pull-right">${resultData.BOARD_DATE}</span>
 				</a>
 
 			</div>
@@ -240,7 +254,9 @@ var fn_setComment= function(url, id, params) {
 	<div class="panel">
 		<div class="panel-body">
 			<button id="show_comment" class="btn" data-toggle="collapse" name="${resultMap.BOARD_SEQ}"
-				data-target="#BoardComment" onclick = comment_click(this.name); >댓글보기</button>
+				data-target="#BoardComment" onclick = comment_click(this.name); >
+				댓글보기<!-- <span class="badge"></span> -->
+				</button>
 		</div>
 
 		<!-- 댓글 목록 -->
