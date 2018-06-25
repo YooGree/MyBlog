@@ -20,4 +20,20 @@
 		</p>
 		</a>
 	</div>
+	<div class="thumbnail">
+	<a href="http://70.12.115.64:8080/mini" target="_blank">
+		<img src="<c:url value='/resources/image/mc.PNG' />">
+		<p>
+			<strong>Multi Blog</strong>
+		</p>
+		</a>
+	</div>
+	<div class="thumbnail">
+	<a href="http://70.12.115.64:8080/mini" target="_blank">
+		<img src="<c:url value='/resources/image/mc1501.PNG' />">
+		<p>
+			<strong>1501 Group</strong>
+		</p>
+		</a>
+	</div>
 </div>
