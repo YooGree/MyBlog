@@ -5,7 +5,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 
 <div class="col-sm-8 text-left">
-	<div class="container">
+
 		<h2>로고 바꾸기</h2>
 		<form role="form" class="form-horizontal" method="POST" action="<c:url value='/settings/logoChange'/>">
 			<div class="form-group">
@@ -16,6 +16,6 @@
 				<button type="submit" class="btn btn-primary">변경</button>
 			</div>
 		</form>
-	</div>
+
 </div>
 

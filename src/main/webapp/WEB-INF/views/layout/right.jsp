@@ -13,7 +13,7 @@
 		</a>
 	</div>
 	<div class="thumbnail">
-	<a href="http://70.12.115.78:8080/blog" target="_blank">
+	<a href="http://70.12.115.72:8080/YourCat" target="_blank">
 		<img src="<c:url value='/resources/image/cat01.jpg' />">
 		<p>
 			<strong>ShowMeYourCats</strong>

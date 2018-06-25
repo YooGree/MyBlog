@@ -4,7 +4,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
 <div class="col-sm-8 text-left">
-	<div class="container">
+
 		<h2>색깔 바꾸기</h2>
 		<form class="form-horizontal" method="POST" action="<c:url value='/settings/themaChange'/>">
 			<div class="form-group">
@@ -15,5 +15,5 @@
 			<button type="submit" class="btn btn-primary">변경</button>
 			</div>
 		</form>
-	</div>
+
 </div>

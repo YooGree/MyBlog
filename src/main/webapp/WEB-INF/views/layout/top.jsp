@@ -38,7 +38,7 @@
         				<li><a href="<c:url value='/member/signup'/>">Signup</a></li>
     				</c:when>
     				<c:otherwise>
-    					<li><a href="<c:url value='/j_spring_security_logout' />">${user}님 환영합니다.</a></li>
+    					<li><a href="<c:url value='/j_spring_security_logout' />">${user}</a></li>
     				</c:otherwise>
 				</c:choose> 
 				
